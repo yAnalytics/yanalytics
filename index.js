@@ -63,9 +63,10 @@ $(document).on('deviceready', function() {
 
     $loginButton.on('click', function() {
         googleapi.authorize({
-            client_id: '122670225392-o53fr3k622m652ov0md2sne9ihls368h.apps.googleusercontent.com',
-            client_secret: 'Zih1DE1ZfSjNG5D2v5juLjxn',
-            redirect_uri: 'http://localhost',
+            client_id: '122670225392-t8qh5ennnrqim2j7vrbc3vfa1td3sq5d.apps.googleusercontent.com',
+            client_secret: 'EE3T2nrELtAGGJIl9stXQq-2',
+            redirect_uri: 'urn:ietf:wg:oauth:2.0:oob
+                           http://localhost',
             scope: 'https://www.googleapis.com/auth/analytics.readonly'
         }).done(function(data) {
             $loginStatus.html('Access Token: ' + data.access_token);
