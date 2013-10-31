@@ -5,12 +5,18 @@ var CLIENT_SCOPES = [
     'https://www.googleapis.com/auth/youtube.readonly'
 ];
 
+var api = {
+	authorize : function() {
+		window.open('www.google.de', '_blank', 'location=no,toolbar=no');
+	}
+};
+
 
 $(document).on('deviceready', function() {
     var $loginButton = $('#login a');
     var $loginStatus = $('#login p');
 
     $loginButton.on('click', function() {
-        window.open('www.google.de', '_blank', 'location=no,toolbar=no');
+        api.authorize();
     });
 });
