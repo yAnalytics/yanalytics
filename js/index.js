@@ -17,7 +17,7 @@ var user  = {
                        scope: CLIENT_SCOPES });
        
        var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
-       (authWindow).on('loadstart', function(e){
+       $(authWindow).on('loadstart', function(e){
        	
        	  var url = e.originalEvent.url;
           var code = /\?code=(.+)$/.exec(url);
@@ -55,9 +55,12 @@ $(document).on('deviceready', function() {
 	var $loginButton = "#login a";
 	var $loginStatus = "#login p";
 	
+	
+	$(loginButton).on('click', function() {
 	user.authorize().done(function(data){
 		$loginStatus.html = 'Access Token: ' + data.access_token;
 	}).fail(function(data) {
 		$loginStatus.html(data.error);
+	});
 	});
 });
