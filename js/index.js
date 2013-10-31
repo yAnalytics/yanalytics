@@ -38,6 +38,10 @@ var api = {
 				}).fail(function(response){
 					deferred.reject(response.responseJSON);
 				});
+			} else if(error) {
+				deferred.reject({
+					error: error[1]
+				});
 			}
 		});
 		
@@ -54,7 +58,7 @@ $(document).on('deviceready', function() {
         api.authorize().done(function(data) {
         	$loginStatus.html('Access token: ' + data.access_token);
         }).fail(function(data) {
-        	
+        	$loginStatus.html(data.error);
         });
     });
 });
