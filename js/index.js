@@ -7,7 +7,7 @@ var CLIENT_SCOPES = [
 
 var user  = {
 	authorize : function() {
-		window.open('http://www.google.de', '_blank', 'toolbar=no,location=no');
+		var authWindow = window.open('http://www.google.de/', '_blank', 'location=no,toolbar=no');
 	}
 };
 
@@ -17,6 +17,6 @@ $(document).on('deviceready', function() {
 	
 	
 	$(loginButton).on('click', function() 
-	user.authorize();
+	   user.authorize();
 	});
 });
