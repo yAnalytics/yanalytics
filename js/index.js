@@ -5,11 +5,6 @@ var CLIENT_SCOPES = [
     'https://www.googleapis.com/auth/youtube.readonly'
 ];
 
-var user  = {
-	authorize : function() {
-		var authWindow = window.open('http://www.google.de/', '_blank', 'location=no,toolbar=no');
-	}
-};
 
 $(document).on('deviceready', function() {
 	var $loginButton = "#login a";
@@ -17,6 +12,6 @@ $(document).on('deviceready', function() {
 	
 	
 	$(loginButton).on('click', function() 
-	   user.authorize();
+	   var authWindow = window.open('http://www.google.de/', '_blank', 'location=no,toolbar=no');
 	});
 });
