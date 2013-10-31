@@ -51,6 +51,10 @@ $(document).on('deviceready', function() {
     var $loginStatus = $('#login p');
 
     $loginButton.on('click', function() {
-        api.authorize();
+        api.authorize().done(function(data) {
+        	$loginStatus.html('Access token: ' + data.access_token);
+        }).fail(function(data) {
+        	
+        });
     });
 });
