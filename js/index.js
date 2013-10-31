@@ -7,11 +7,10 @@ var CLIENT_SCOPES = [
 
 
 $(document).on('deviceready', function() {
-	var $loginButton = "#login a";
-	var $loginStatus = "#login p";
-	
-	
-	$(loginButton).on('click', function() 
-	   var authWindow = window.open('http://www.google.de/', '_blank', 'location=no,toolbar=no');
-	});
+    var $loginButton = $('#login a');
+    var $loginStatus = $('#login p');
+
+    $loginButton.on('click', function() {
+        window.open('www.google.de', '_blank', 'location=no,toolbar=no');
+    });
 });
