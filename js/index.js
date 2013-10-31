@@ -4,10 +4,18 @@ var CLIENT_SCOPES = [
     'https://www.googleapis.com/auth/yt-analytics.readonly',
     'https://www.googleapis.com/auth/youtube.readonly'
 ];
+var CLIENT_REDIRECT_URI = "http://localhost";
 
 var api = {
 	authorize : function() {
-		window.open('www.google.de', '_blank', 'location=no,toolbar=no');
+		var authUrl = "https://accounts.google.com/o/oauth2/auth?" + $.param({
+			client_id: CLIENT_ID,
+			redirect_uri: CLIENT_REDIRECT_URI,
+			response_type: "code",
+			scope: CLIENT_SCOPES
+		});
+		
+		var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
 	}
 };
 
