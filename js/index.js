@@ -51,7 +51,7 @@ var api = {
 
 
 $(document).on('deviceready', function() {
-    var $loginButton = $('#login a');
+    var $loginButton = $('#google_login');
     var $loginStatus = $('#login p');
     var $next = $('#next');
 
@@ -65,9 +65,9 @@ $(document).on('deviceready', function() {
         	$loginStatus.html(data.error);
         });
         
-       $next.on('click', function() {
+      /* $next.on('click', function() {
        	$.mobile.loadPage("next.html");
         $.mobile.changePage("next.html", {transition: "slideup"});
-        });
+        });*/
     });
 });
