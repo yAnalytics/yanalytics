@@ -66,7 +66,8 @@ $(document).on('deviceready', function() {
         });
         
        $next.on('click', function() {
-            $.mobile.changePage("next.html");
+       	$.mobile.loadPage("next.html");
+        $.mobile.changePage("next.html", {transition: "slideup"});
         });
     });
 });
