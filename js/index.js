@@ -53,12 +53,20 @@ var api = {
 $(document).on('deviceready', function() {
     var $loginButton = $('#login a');
     var $loginStatus = $('#login p');
+    var $next = $('#next');
 
     $loginButton.on('click', function() {
         api.authorize().done(function(data) {
         	$loginStatus.html('Access token: ' + data.access_token);
+        	token = data.access_token;
+     
+        	
         }).fail(function(data) {
         	$loginStatus.html(data.error);
+        });
+        
+       $next.on('click', function() {
+            $.mobile.changePage("next.html");
         });
     });
 });
