@@ -65,9 +65,11 @@ $(document).on('deviceready', function() {
         	$loginStatus.html(data.error);
         });
         
-      /* $next.on('click', function() {
+       $.mobile.allowCrossDomainPages = true;
+       
+       $next.on('click', function() {
        	$.mobile.loadPage("next.html");
         $.mobile.changePage("next.html", {transition: "slideup"});
-        });*/
+        });
     });
 });
