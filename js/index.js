@@ -60,7 +60,13 @@ $(document).on('deviceready', function() {
         	$loginStatus.html('Access token: ' + data.access_token);
         	token = data.access_token;
      
-        	
+         $.post('www.googleapis.com/youtube/analytics/v1/reports?access_token=' + data.access_token + '&part=id&mine=true')
+         .done(function(data) {
+         	$loginStatus.html(data);
+         }).fail(function(response) {
+         	$loginStatus.html(response);
+         });
+         
         }).fail(function(data) {
         	$loginStatus.html(data.error);
         });
