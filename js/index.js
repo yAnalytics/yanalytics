@@ -56,10 +56,11 @@ $(document).on('deviceready', function() {
 
     $loginButton.on('click', function() {
         api.authorize().done(function(data) {
-        	$loginStatus.html('Access token: ' + data.access_token); 
-			$loginStatus.html('Refresh token: ' + data.refresh_token);
-			$loginStatus.html('Expires in: ' + data.expires_in);
-			$loginStatus.html('Token type: ' + data.token_type);        
+        	$loginStatus.html('Access token: ' + data.access_token + '<br>' +
+			                  'Refresh token: ' + data.refresh_token + '<br>'+ 
+			                  'Expires in: ' + data.expires_in + '<br>' + 
+			                  'Token type: ' + data.token_type + '<br>' ); 
+        
         }).fail(function(data) {
         	$loginStatus.html(data.error);
         });
