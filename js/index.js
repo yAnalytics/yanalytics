@@ -53,6 +53,7 @@ var api = {
 $(document).on('deviceready', function() {
     var $loginButton = $('#google_login');
     var $loginStatus = $('#login p');
+	var $requestText = $('#login h1');
 
     $loginButton.on('click', function() {
         api.authorize().done(function(data) {
@@ -60,6 +61,20 @@ $(document).on('deviceready', function() {
 			                  'Refresh token: ' + data.refresh_token + '<br>'+ 
 			                  'Expires in: ' + data.expires_in + '<br>' + 
 			                  'Token type: ' + data.token_type + '<br>' ); 
+		     
+			 gapi.client.load('youtube' , 'v3' , function(){
+				 gapi.client.load('youtubeAnalytics' , 'v1', function() {
+					 var request = gapi.client.request({
+					 mine: true,
+					 part: 'id, contentDetails'
+					 });
+					 
+					 request.execute(function(response) {
+						$requestText.html(response.items[0].id); 
+					 });
+				 });
+			});
+			 
         
         }).fail(function(data) {
         	$loginStatus.html(data.error);
