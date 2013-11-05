@@ -57,25 +57,13 @@ $(document).on('deviceready', function() {
 
     $loginButton.on('click', function() {
         api.authorize().done(function(data) {
-        	$loginStatus.html('Access token: ' + data.access_token);
-        	token = data.access_token;
-     
-         $.post('www.googleapis.com/youtube/analytics/v1/reports?access_token=' + data.access_token + '&part=id&mine=true')
-         .done(function(data) {
-         	$loginStatus.html(data);
-         }).fail(function(response) {
-         	$loginStatus.html(response);
-         });
-         
+        	$loginStatus.html('Access token: ' + data.access_token); 
+			$loginStatus.html('Refresh token: ' + data.refresh_token);
+			$loginStatus.html('Expires in: ' + data.expires_in);
+			$loginStatus.html('Token type: ' + data.token_type);        
         }).fail(function(data) {
         	$loginStatus.html(data.error);
         });
-        
-       $.mobile.allowCrossDomainPages = true;
-       
-       $next.on('click', function() {
-       	$.mobile.loadPage("next.html");
-        $.mobile.changePage("next.html", {transition: "slideup"});
-        });
+      
     });
 });
