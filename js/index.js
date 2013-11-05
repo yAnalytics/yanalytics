@@ -70,6 +70,9 @@ $(document).on('deviceready', function() {
 					 });
 					 
 					 request.execute(function(response) {
+						 if ('error' in response) {
+							 $requestText.html(response.error.message);
+						 }
 						$requestText.html(response.items[0].id); 
 					 });
 				 });
