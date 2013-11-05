@@ -53,7 +53,6 @@ var api = {
 $(document).on('deviceready', function() {
     var $loginButton = $('#google_login');
     var $loginStatus = $('#login p');
-    var $next = $('#next');
 
     $loginButton.on('click', function() {
         api.authorize().done(function(data) {
