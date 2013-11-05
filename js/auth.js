@@ -1,5 +1,5 @@
 // yAnalytics - authentication with Google Server
-// © Dennis Nemec & Raphael Hauger
+// © (2013) Dennis Nemec & Raphael Hauger
 
 /*
 With this file it's possible to connect to the authentication-server by Google 
@@ -76,3 +76,21 @@ var auth = {
 		// coming soon
 	}
 };
+
+$(document).on('deviceready' , function() {
+	   
+	var $loginButton = $('#google_login');
+    var $loginStatus = $('#login p');
+	var $requestText = $('#login h1');
+	
+	$loginButton.on('click' , function() {
+	auth.getToken().done(function(data) {
+		$loginStatus.add('Access token (not local) : ' + data.access_token);
+		$loginStatus.add('Access token (local) : ' + localStorage.access_token);
+		$loginStatus.add('Expires At (local) : ' + localStorage.expires_at);
+	}).fail(function(data) {
+		$loginStatus.add('An error has occoured: ' + data.error);
+	});
+	
+	});
+});
