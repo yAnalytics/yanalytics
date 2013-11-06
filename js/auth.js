@@ -110,7 +110,7 @@ var app = {
 			app.authUser();
 		});
 		
-		auth.setToken().done(function(data) {
+		auth.getToken().done(function(data) {
 			app.showSomething(data);
 		}).fail(function() {
 			app.onButtonclick();
@@ -127,7 +127,7 @@ var app = {
 	},
 	
 	showSomething : function(data) {
-		$loginStatus.append('<br>Auth code: ' + data.acces_token);
+		$loginStatus.append('<br>Auth code: ' + data.access_token);
 	}
 };
 
