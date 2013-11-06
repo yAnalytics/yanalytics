@@ -107,15 +107,11 @@ var auth = {
 var app = {
 	init : function() {	
 		$('#login a').on('click', function() {
-			$loginStatus.append('Rufe onButtonClick() auf');
 			app.onButtonClick();
 		});
 	},
 	
-	
-	
 	onButtonClick : function() {
-		$loginStatus.append('Bin drin');
 		auth.authorize()
 		.done(function(data) {
 		$loginStatus.append(data.access_token);
