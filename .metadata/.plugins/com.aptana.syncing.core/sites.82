@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<sites>
-<site>
-<name>New Connection</name>
-<source>workspace:/Tic%20Optics</source>
-<destination>aptanavfs://ca7f0d92-3f7a-482e-afd7-fb17294ae291/</destination>
-</site>
-</sites>
