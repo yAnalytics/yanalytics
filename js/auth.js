@@ -64,6 +64,7 @@ var auth = {
 	},
 	
 	getToken: function() {
+		var deferred = $.Deferred; 
 		if (new Date().getTime() < localStorage.expires_at) {
 			deferred.resolve({
                 access_token: localStorage.access_token
@@ -112,7 +113,7 @@ var app = {
 		
 		$loginStatus.append('Überprüfe, ob schon ein Token vorhanden ist. <br>');
 		
-		auth.getToken().then(function(data) {
+		auth.getToken().done(function(data) {
 			$loginStatus.append('Auth code(local): ' + localStorage.access_token);
 			app.showSomething(data);
 		}).fail(function() {
