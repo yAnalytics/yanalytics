@@ -12,6 +12,9 @@ var CLIENT_REDIRECT_URI = "http://localhost";
 var CLIENT_SCOPES = "https://www.googleapis.com/auth/yt-analytics.readonly";
 
 
+var $loginButton = $('#login a');
+var $loginStatus = $('#login p');
+
 var auth = {
 	authorize: function() {
 		var deferred = $.Deferred();
@@ -102,11 +105,9 @@ var auth = {
 };
 
 var app = {
-	init : function() {
-		var $loginButton = $('#login a');
-		var $loginStatus = $('#login p');
-		
-		$(loginButton).on('click', function() {
+	init : function() {	
+		$('#login a').on('click', function() {
+			$loginStatus.append('Rufe onButtonClick() auf');
 			app.onButtonClick();
 		});
 	},
@@ -114,9 +115,11 @@ var app = {
 	
 	
 	onButtonClick : function() {
-		auth.authorize().done(function(data) {
+		$loginStatus.append('Bin drin');
+		auth.authorize()
+		.done(function(data) {
 		$loginStatus.append(data.access_token);
-	});
+		});
 	}
 };
 
