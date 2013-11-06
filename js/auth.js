@@ -107,15 +107,27 @@ var auth = {
 var app = {
 	init : function() {	
 		$('#login a').on('click', function() {
+			app.authUser();
+		});
+		
+		auth.setToken().done(function(data) {
+			app.showSomething(data);
+		}).fail(function() {
+			app.onButtonclick();
+		});
+	},
+	
+	authUser : function() {
+		auth.authorize()
+		.done(function(data) {
+			app.showSomething(data);
+		}).fail(function() {
 			app.onButtonClick();
 		});
 	},
 	
-	onButtonClick : function() {
-		auth.authorize()
-		.done(function(data) {
-		$loginStatus.append(data.access_token);
-		});
+	showSomething : function(data) {
+		$loginStatus.append('<br>Auth code: ' + data.acces_token);
 	}
 };
 
