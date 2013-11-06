@@ -64,19 +64,20 @@ var auth = {
 	},
 	
 	getToken: function() {
-		var deferred = $.Deferred; 
-		if (new Date().getTime() < localStorage.expires_at) {
-			deferred.resolve({
+        var deferred = $.Deferred();
+
+        if (new Date().getTime() < localStorage.expires_at) {
+            deferred.resolve({
                 access_token: localStorage.access_token
-            });	
-		} else if (localStorage.refresh_token) {
-			$.post('https://accounts.google.com/o/oauth2/token', {
+            });
+        } else if (localStorage.refresh_token) {
+            $.post('https://accounts.google.com/o/oauth2/token', {
                 refresh_token: localStorage.refresh_token,
                 client_id: CLIENT_ID,
                 client_secret: CLIENT_SECRET,
                 grant_type: 'refresh_token'
             }).done(function(data) {
-                auth.setToken(data);
+                googleapi.setToken(data);
                 deferred.resolve(data);
             }).fail(function(response) {
                 deferred.reject(response.responseJSON);
@@ -85,7 +86,7 @@ var auth = {
             deferred.reject();
         }
 
-        return deferred.promise();	
+        return deferred.promise();
 	},
 	
 	setToken: function(data) {
