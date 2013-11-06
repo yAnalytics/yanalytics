@@ -126,6 +126,8 @@ $(document).on('deviceready' , function() {
 	var $loginButton = $('#login a');
 	var $loginStatus = $('#login p');
 		
+		$loginStatus.append('Wait for click'');
+		
 		$(loginButton).on('click', function() {
 			$loginStatus.append('HII');
 			auth.authorize().done(function(data) {

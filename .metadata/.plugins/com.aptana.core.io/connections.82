@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+<connection id="ca7f0d92-3f7a-482e-afd7-fb17294ae291" type="ftp">
+<name>tic optics</name>
+<host>tic-optics.dyndns.org</host>
+<port>29</port>
+<login>dennis</login>
+<passive>true</passive>
+</connection>
+</connections>
