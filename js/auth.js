@@ -12,7 +12,7 @@ var CLIENT_REDIRECT_URI = "http://localhost";
 var CLIENT_SCOPES = "https://www.googleapis.com/auth/yt-analytics.readonly";
 
 
-var $loginButton = $('#login a');
+var $loginButton = $('#google_login');
 var $loginStatus = $('#login p');
 
 var auth = {
@@ -106,7 +106,7 @@ var auth = {
 
 var app = {
 	init : function() {	
-		$('#login a').on('click', function() {
+		$(loginButton).on('click', function() {
 			app.authUser();
 		});
 		
@@ -133,8 +133,5 @@ var app = {
 };
 
 $(document).on('deviceready' , function() {
-	var $loginButton = $('#login a');
-	var $loginStatus = $('#login p');
-	
 	app.init();
 });
