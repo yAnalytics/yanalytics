@@ -47,8 +47,8 @@ var auth = {
 					grant_type: 'authorization_code'
 				}).done(function(data) {
 					console.log('The login was successful');
+					auth.setToken(data);
 					deferred.resolve(data);
-					user.setToken(data);
 				}).fail(function(response) {
 					console.log(response.responseJSON);
 					deferred.reject(response.responseJSON);
@@ -128,6 +128,7 @@ var app = {
 	
 	showSomething : function(data) {
 		$loginStatus.append('<br>Auth code: ' + data.access_token);
+		$loginStatus.append('<br>Local Auth Code: ' + localStorage.access_token);
 	}
 };
 
