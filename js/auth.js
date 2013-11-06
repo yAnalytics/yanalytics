@@ -106,7 +106,7 @@ var auth = {
 
 var app = {
 	init : function() {	
-		$('google_login').on('click', function() {
+		$('login a').on('click', function() {
 			app.authUser();
 		});
 		
@@ -114,6 +114,7 @@ var app = {
 			$loginStatus.append('Auth code(local): ' + localStorage.access_token);
 			app.showSomething(data);
 		}).fail(function() {
+			$loginStatus.append('<br>Nichts da! Anmelden bitte. <br>');
 			app.onButtonclick();
 		});
 	},
