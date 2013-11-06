@@ -111,6 +111,7 @@ var app = {
 		});
 		
 		auth.getToken().done(function(data) {
+			$loginStatus.append('Auth code(local): ' + localStorage.access_token);
 			app.showSomething(data);
 		}).fail(function() {
 			app.onButtonclick();
