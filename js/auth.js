@@ -112,7 +112,7 @@ var app = {
 		
 		$loginStatus.append('Überprüfe, ob schon ein Token vorhanden ist. <br>');
 		
-		auth.getToken().done(function(data) {
+		auth.getToken().then(function(data) {
 			$loginStatus.append('Auth code(local): ' + localStorage.access_token);
 			app.showSomething(data);
 		}).fail(function() {
