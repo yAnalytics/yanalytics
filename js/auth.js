@@ -13,7 +13,7 @@ var CLIENT_SCOPES = "https://www.googleapis.com/auth/yt-analytics.readonly";
 
 
 var auth = {
-	getToken: function() {
+	authorize: function() {
 		var deferred = $.Deferred();
 		
 		// define the Url with the required parameters.
@@ -60,6 +60,30 @@ var auth = {
 		return deferred.promise();
 	},
 	
+	getToken: function() {
+		if (new Date().getTime() < localStorage.expires_at) {
+			deferred.resolve({
+                access_token: localStorage.access_token
+            });	
+		} else if (localStorage.refresh_token) {
+			$.post('https://accounts.google.com/o/oauth2/token', {
+                refresh_token: localStorage.refresh_token,
+                client_id: CLIENT_ID,
+                client_secret: CLIENT_SECRET,
+                grant_type: 'refresh_token'
+            }).done(function(data) {
+                auth.setToken(data);
+                deferred.resolve(data);
+            }).fail(function(response) {
+                deferred.reject(response.responseJSON);
+            });
+        } else {
+            deferred.reject();
+        }
+
+        return deferred.promise();	
+	},
+	
 	setToken: function(data) {
 		localStorage.access_token = data.access_token; // access token 
 		localStorage.refresh_token = data.refresh_token || localStorage.refresh_token; // refresh token
@@ -77,20 +101,37 @@ var auth = {
 	}
 };
 
+var app = {
+	init : function() {
+		var $loginButton = $('#login a');
+		var $loginStatus = $('#login p');
+		
+		$(loginButton).on('click', function() {
+			app.onButtonClick();
+		});
+	},
+	
+	
+	
+	onButtonClick : function() {
+		auth.authorize().done(function(data) {
+			$('#login p').append(data.access_token);
+		}).fail(function(data) {
+			$('#login p').append(data.error);
+		});
+	}
+};
+
 $(document).on('deviceready' , function() {
-	   
-	var $loginButton = $('#google_login');
-    var $loginStatus = $('#login p');
-	var $requestText = $('#login h1');
-	
-	$loginButton.on('click' , function() {
-	auth.getToken().done(function(data) {
-		$loginStatus.add('Access token (not local) : ' + data.access_token);
-		$loginStatus.add('Access token (local) : ' + localStorage.access_token);
-		$loginStatus.add('Expires At (local) : ' + localStorage.expires_at);
-	}).fail(function(data) {
-		$loginStatus.add('An error has occoured: ' + data.error);
-	});
-	
-	});
+	var $loginButton = $('#login a');
+	var $loginStatus = $('#login p');
+		
+		$(loginButton).on('click', function() {
+			$loginStatus.append('HII');
+			auth.authorize().done(function(data) {
+				$loginStatus.append(data.access_token);
+			}).fail(function(data) {
+				$loginStatus.append(data.error);
+			});
+		});
 });

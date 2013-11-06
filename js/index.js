@@ -12,16 +12,7 @@ $(document).on('deviceready', function() {
 	
 	$requestText.html('Initialize');
 	
-    $loginButton.on('click', function() {
-		$.getScript("auth.js", function(){
-			console.log('Script: auth.js has successfully loaded.');
-			auth.getToken().done(function(data) {
-				$loginStatus.add('Access token (not local) : ' + data.access_token);
-				$loginStatus.add('Access token (local) : ' + localStorage.access_token);
-				$loginStatus.add('Expires At (local) : ' + localStorage.expires_at);
-			}).fail(function(data) {
-				$loginStatus.add('An error has occoured: ' + data.error);
-			});
-			});
-    });
+    $.getScript('auth.js' , function() {
+		$requestText.html('Success!');
+	});
 });
