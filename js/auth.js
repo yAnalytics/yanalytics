@@ -126,5 +126,10 @@ $(document).on('deviceready' , function() {
 	var $loginButton = $('#login a');
 	var $loginStatus = $('#login p');
 	
-	app.init();
+	
+	$loginButton.on('click', function() {
+	auth.authorize().done(function(data) {
+		$loginStatus.append(data.access_token);
+	});
+	});
 });
