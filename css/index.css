@@ -31,10 +31,10 @@ body {
     position:absolute;
     left:50%;
     top:50%;
-    height:50px;
-    width:225px;
+    height:100px;
+    width:800px;
     margin-top: -25px;
-    margin-left: -112px;
+    margin-left: -412px;
     text-align:center;
 }
 
@@ -42,7 +42,7 @@ body {
     border-radius: 5px;
     color: white;
     background: blue;
-    font-size: xx-large;
+    font-size: 45px;
     padding: 10px 20px;
 }
 
