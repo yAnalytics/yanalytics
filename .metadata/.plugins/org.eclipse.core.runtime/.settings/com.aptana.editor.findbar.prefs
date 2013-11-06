@@ -1,0 +1,3 @@
+FIND_BAR_DECORATOR_FIND_ENTRIES=\#\r\n\#Thu Oct 31 20\:41\:00 CET 2013\r\n8\=vz\r\n7\=?vz\r\n6\=?do_change_vz\r\n5\=?do\\\=change_vz\r\n4\=permission\r\n3\=delete\r\n2\=frame\r\n1\=creator\r\n0\=deffered\r\n
+FIND_BAR_DECORATOR_REPLACE_ENTRIES=\#\r\n\#Thu Oct 31 20\:41\:00 CET 2013\r\n6\=do_change.php?\r\n5\=../verwaltung/do_change.php?\r\n4\=php?\r\n3\=changevz\r\n2\=../treeviewdemo/treeview.php?\r\n1\=../treeviewdemo/treeview.php?do\\\=change_vz\r\n0\=deferred\r\n7\=typevz\r\n
+eclipse.preferences.version=1
