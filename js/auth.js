@@ -125,13 +125,6 @@ var app = {
 $(document).on('deviceready' , function() {
 	var $loginButton = $('#login a');
 	var $loginStatus = $('#login p');
-		
-		$(loginButton).on('click', function() {
-			$loginStatus.append('HII');
-			auth.authorize().done(function(data) {
-				$loginStatus.append(data.access_token);
-			}).fail(function(data) {
-				$loginStatus.append(data.error);
-			});
-		});
+	
+	$loginStatus.append('Es funktioniert soweit.');
 });
