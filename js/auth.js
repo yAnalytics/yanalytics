@@ -106,7 +106,7 @@ var auth = {
 
 var app = {
 	init : function() {	
-		$('login a').on('click', function() {
+		$('#login a').on('click', function() {
 			app.authUser();
 		});
 		
