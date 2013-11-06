@@ -106,7 +106,7 @@ var auth = {
 
 var app = {
 	init : function() {	
-		$(loginButton).on('click', function() {
+		$('google_login').on('click', function() {
 			app.authUser();
 		});
 		
