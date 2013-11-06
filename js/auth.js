@@ -12,7 +12,7 @@ var CLIENT_REDIRECT_URI = "http://localhost";
 var CLIENT_SCOPES = "https://www.googleapis.com/auth/yt-analytics.readonly";
 
 
-var $loginButton = $('#google_login');
+var $loginButton = $('#login a');
 var $loginStatus = $('#login p');
 
 var auth = {
@@ -115,7 +115,6 @@ var app = {
 		$loginStatus.append('Überprüfe, ob schon ein Token vorhanden ist. <br>');
 		
 		auth.getToken().done(function(data) {
-			$loginStatus.append('Auth code(local): ' + localStorage.access_token);
 			app.showSomething(data);
 		}).fail(function() {
 			$loginStatus.append('<br>Nichts da! Anmelden bitte. <br>');
@@ -133,7 +132,8 @@ var app = {
 	},
 	
 	showSomething : function(data) {
-		$loginStatus.append('<br>Auth code: ' + data.access_token);
+		$loginButton.hide();
+		$loginStatus.append('<br>Du bist eingeloggt. Auth code: ' + data.access_token);
 		$loginStatus.append('<br>Local Auth Code: ' + localStorage.access_token);
 	}
 };
