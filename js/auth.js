@@ -115,10 +115,12 @@ var app = {
 		$loginStatus.append('Überprüfe, ob schon ein Token vorhanden ist. <br>');
 		
 		auth.getToken().done(function(data) {
+			$loginStatus.append('FAIL!');
 			app.showSomething(data);
 		}).fail(function() {
+			$loginStatus.append('FUUL!');
 			$loginStatus.append('<br>Nichts da! Anmelden bitte. <br>');
-			app.onButtonclick();
+			//app.onButtonclick();
 		});
 	},
 	
