@@ -120,7 +120,7 @@ var app = {
 		}).fail(function() {
 			$loginStatus.append('FUUL!');
 			$loginStatus.append('<br>Nichts da! Anmelden bitte. <br>');
-			//app.onButtonclick();
+			app.onButtonclick();
 		});
 	},
 	
