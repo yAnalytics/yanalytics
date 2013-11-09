@@ -77,7 +77,7 @@ var auth = {
                 client_secret: CLIENT_SECRET,
                 grant_type: 'refresh_token'
             }).done(function(data) {
-                googleapi.setToken(data);
+                auth.setToken(data);
                 deferred.resolve(data);
             }).fail(function(response) {
                 deferred.reject(response.responseJSON);
@@ -95,10 +95,6 @@ var auth = {
 		
 		var expiresAt = new Date().getTime() + parseInt(data.expires_in, 10) * 1000 - 60000; // expires in
         localStorage.expires_at = expiresAt;
-	},
-	
-	refreshToken: function() {
-		 // coming soon
 	},
 	
 	revokeToken: function() {
