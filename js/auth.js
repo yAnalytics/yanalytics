@@ -116,7 +116,6 @@ var app = {
 			app.authUser();
 		});
 		
-		$('#logout a').on('click', auth.revokeToken());
 		
 		$loginStatus.append('Überprüfe, ob schon ein Token vorhanden ist. <br>');
 		
@@ -139,6 +138,7 @@ var app = {
 	showSomething : function(data) {
 		$loginButton.hide();
 		$logoutButton.show();
+		$('#logout a').on('click', auth.revokeToken());
 		$loginStatus.append('<br>Du bist eingeloggt. Auth code: ' + data.access_token);
 		$loginStatus.append('<br>Local Auth Code: ' + localStorage.access_token);
 	}
