@@ -15,6 +15,8 @@ var CLIENT_SCOPES = "https://www.googleapis.com/auth/yt-analytics.readonly";
 var $loginButton = $('#login a');
 var $loginStatus = $('#login p');
 
+var $logoutButton = $('#logout a');
+
 var auth = {
 	authorize: function() {
 		var deferred = $.Deferred();
@@ -97,21 +99,28 @@ var auth = {
         localStorage.expires_at = expiresAt;
 	},
 	
+	removeLocalToken: function() {
+		
+	},
+	
 	revokeToken: function() {
-		// coming soon
+		
 	}
 };
 
 var app = {
 	init : function() {	
+		$logoutButton.hide();
+		
 		$('#login a').on('click', function() {
 			app.authUser();
 		});
 		
+		$('#logout a').on('click', revokeToken());
+		
 		$loginStatus.append('Überprüfe, ob schon ein Token vorhanden ist. <br>');
 		
 		auth.getToken().done(function(data) {
-			$loginStatus.append('FAIL!');
 			app.showSomething(data);
 		}).fail(function() {
 			$loginStatus.append('FUUL!');
@@ -131,6 +140,7 @@ var app = {
 	
 	showSomething : function(data) {
 		$loginButton.hide();
+		$logoutButton.show();
 		$loginStatus.append('<br>Du bist eingeloggt. Auth code: ' + data.access_token);
 		$loginStatus.append('<br>Local Auth Code: ' + localStorage.access_token);
 	}
