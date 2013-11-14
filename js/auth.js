@@ -104,7 +104,7 @@ var auth = {
 	},
 	
 	revokeToken: function() {
-		
+		$loginStatus.append('Du bist nun in der revokeToken() Funktion!');
 	}
 };
 
@@ -123,8 +123,6 @@ var app = {
 		auth.getToken().done(function(data) {
 			app.showSomething(data);
 		}).fail(function() {
-			$loginStatus.append('FUUL!');
-			$loginStatus.append('<br>Nichts da! Anmelden bitte. <br>');
 			app.onButtonclick();
 		});
 	},
