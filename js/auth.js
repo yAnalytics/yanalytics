@@ -116,7 +116,7 @@ var app = {
 			app.authUser();
 		});
 		
-		$('#logout a').on('click', revokeToken());
+		$('#logout a').on('click', auth.revokeToken());
 		
 		$loginStatus.append('Überprüfe, ob schon ein Token vorhanden ist. <br>');
 		
