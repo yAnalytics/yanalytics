@@ -109,7 +109,9 @@ var auth = {
 		$.getJSON('https://accounts.google.com/o/oauth2/revoke?token=' + localStorage.access_token).done(function(data){
 			auth.removeLocalToken();
 			deferred.resolve(data);
+			$loginStatus.append('Sie haben sich erfolgreich ausgeloogt');
 		}).fail(function(response) {
+			$loginStatus.append('Ein Fehler ist aufgetreten');
 			deferred.reject(response.responeJSON);
 		});
 		
