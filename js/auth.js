@@ -104,12 +104,21 @@ var auth = {
 	},
 	
 	revokeToken: function() {
-		$loginStatus.append('Du bist nun in der revokeToken() Funktion!');
+		var deferred = $.Deferred();
+		
+		$post('https://accounts.google.com/o/oauth2/revoke?token=' + localStorage.access_token).done(function(data){
+			deferred.resolve(data);
+		}).fail(function(response) {
+			deferred.reject(response.responeJSON);
+		});
+		
+		return deferred.promise();
 	}
 };
 
 var app = {
 	init : function() {	
+		$loginStatus.html = '';
 		$logoutButton.hide();
 		
 		$('#login a').on('click', function() {
@@ -117,7 +126,10 @@ var app = {
 		});
 		
 		$('#logout a').on('click', function() {
-			auth.revokeToken();
+			auth.revokeToken().done(function(data) {
+				$loginStatus.append('Sie haben sich erfolgreich ausgeloggt.');
+				app.init();
+			});
 		});
 		
 		$loginStatus.append('Überprüfe, ob schon ein Token vorhanden ist. <br>');
