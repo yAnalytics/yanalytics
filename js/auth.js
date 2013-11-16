@@ -100,13 +100,14 @@ var auth = {
 	},
 	
 	removeLocalToken: function() {
-		
+		window.localStorage.clear();
 	},
 	
 	revokeToken: function() {
 		var deferred = $.Deferred();
 		
-		$post('https://accounts.google.com/o/oauth2/revoke?token=' + localStorage.access_token).done(function(data){
+		$.getJSON('https://accounts.google.com/o/oauth2/revoke?token=' + localStorage.access_token).done(function(data){
+			auth.removeLocalToken();
 			deferred.resolve(data);
 		}).fail(function(response) {
 			deferred.reject(response.responeJSON);
@@ -129,6 +130,8 @@ var app = {
 			auth.revokeToken().done(function(data) {
 				$loginStatus.append('Sie haben sich erfolgreich ausgeloggt.');
 				app.init();
+			}).fail(function(data) {
+				$loginStatus.append('Error: ' + data.error);
 			});
 		});
 		
