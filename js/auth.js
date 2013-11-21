@@ -113,12 +113,13 @@ var auth = {
 
 var app = {
 	init : function() {	
-		
+/*		
 		$.getScript("index.js", function(){
 			$loginStatus.append("Lade Datei und rufe Test() auf");
 			test();
 			$loginStatus.append("Test erfolgreich aufgerufen");
 			});
+		*/
 		
 		$logoutButton.hide();
 		
