@@ -145,5 +145,10 @@ var app = {
 };
 
 $(document).on('deviceready' , function() {
-	app.init();
+	//app.init();
+	
+	$.getScript("index.js", function(){
+		$loginStatus.append('success');
+   // Here you can use anything you defined in the loaded script
+});
 });
