@@ -92,9 +92,6 @@ var auth = {
 	},
 	
 	setToken: function(data) {
-		if (localstorage.access_token) {
-			$loginStatus.append('Access Token vorhanden');
-		}
 		localStorage.access_token = data.access_token; // access token 
 		localStorage.refresh_token = data.refresh_token || localStorage.refresh_token; // refresh token
 		
@@ -113,14 +110,6 @@ var auth = {
 
 var app = {
 	init : function() {	
-/*		
-		$.getScript("index.js", function(){
-			$loginStatus.append("Lade Datei und rufe Test() auf");
-			test();
-			$loginStatus.append("Test erfolgreich aufgerufen");
-			});
-		*/
-		
 		$logoutButton.hide();
 		
 		$('#login a').on('click', function() {
