@@ -16,3 +16,9 @@ $(document).on('deviceready', function() {
 		$requestText.html('Success!');
 	});
 });
+
+
+function test() {
+	var $loginStatus = $('#login p');
+	$loginStatus.append('Es hat funktioniert!');
+}
