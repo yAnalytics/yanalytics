@@ -103,16 +103,28 @@ var auth = {
 	},
 	
 	removeLocalToken: function() {
-		
+		window.localStorage.clear();
 	},
 	
 	revokeToken: function() {
-		$loginStatus.append('Du bist nun in der revokeToken() Funktion!');
+		var deferred = $.Deferred();
+		
+		$.getJSON('https://accounts.google.com/o/oauth2/revoke?token=' + localStorage.access_token).done(function(data){
+			auth.removeLocalToken();
+			deferred.resolve(data);
+			$loginStatus.append('Sie haben sich erfolgreich ausgeloogt');
+		}).fail(function(response) {
+			$loginStatus.append('Ein Fehler ist aufgetreten');
+			deferred.reject(response.responeJSON);
+		});
+		
+		return deferred.promise();
 	}
 };
 
 var app = {
 	init : function() {	
+<<<<<<< HEAD
 		
 		$.getScript("index.js", function(){
 			$loginStatus.append("Lade Datei und rufe Test() auf");
@@ -120,12 +132,26 @@ var app = {
 			$loginStatus.append("Test erfolgreich aufgerufen");
 			});
 		
+=======
+		$loginStatus.html = '';
+>>>>>>> 72b12bc53955a3a6ac70724a40b4e075dfcf1a8d
 		$logoutButton.hide();
 		
 		$('#login a').on('click', function() {
 			app.authUser();
 		});
 		
+<<<<<<< HEAD
+=======
+		$('#logout a').on('click', function() {
+			auth.revokeToken().done(function(data) {
+				$loginStatus.append('Sie haben sich erfolgreich ausgeloggt.');
+				app.init();
+			}).fail(function(data) {
+				$loginStatus.append('Error: ' + data.error);
+			});
+		});
+>>>>>>> 72b12bc53955a3a6ac70724a40b4e075dfcf1a8d
 		
 		$loginStatus.append('Überprüfe, ob schon ein Token vorhanden ist. <br>');
 		
