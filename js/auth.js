@@ -141,6 +141,17 @@ var app = {
 		$('#logout a').on('click', auth.revokeToken());
 		$loginStatus.append('<br>Du bist eingeloggt. Auth code: ' + data.access_token);
 		$loginStatus.append('<br>Local Auth Code: ' + localStorage.access_token);
+		
+		$.getScript('js/channel.js' , function(){
+			$loginStatus.append('Successfully loaded \"Channel.js\"');
+			getUser({access_token: localStorage.access_token,
+				    part: id}).done(function(user) {
+				    	$loginStatus.append('Hello: ' + user.id);
+				    }).fail(function(response) {
+				    	$loginStatus.append("Fail: " + response.responseJSON);
+				    });
+			
+		});
 	}
 };
 
