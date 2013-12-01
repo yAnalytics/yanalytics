@@ -9,7 +9,7 @@ With this file it's possible to connect to the authentication-server by Google
 var CLIENT_ID = "122670225392-t8qh5ennnrqim2j7vrbc3vfa1td3sq5d.apps.googleusercontent.com"; 
 var CLIENT_SECRET = "EE3T2nrELtAGGJIl9stXQq-2";
 var CLIENT_REDIRECT_URI = "http://localhost";
-var CLIENT_SCOPES = "https://www.googleapis.com/auth/yt-analytics.readonly";
+var CLIENT_SCOPES = "https://www.googleapis.com/auth/youtube";
 
 
 var $loginButton = $('#login a');
@@ -143,12 +143,14 @@ var app = {
 		$loginStatus.append('<br>Local Auth Code: ' + localStorage.access_token);
 		
 		$.getScript('js/channel.js' , function(){
-			$loginStatus.append('Successfully loaded \"Channel.js\"');
+			$loginStatus.append('<br>Successfully loaded \"Channel.js\"');
+			
 			getUser({access_token: localStorage.access_token,
-				    part: id}).done(function(user) {
-				    	$loginStatus.append('Hello: ' + user.id);
+				    part: id,
+				    mine: true}).done(function(user) {
+				    	$loginStatus.append('<br>Hello: ' + user.id);
 				    }).fail(function(response) {
-				    	$loginStatus.append("Fail: " + response.responseJSON);
+				    	$loginStatus.append("<br>Fail: " + response.responseJSON);
 				    });
 			
 		});
