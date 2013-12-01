@@ -9,7 +9,7 @@ With this file it's possible to connect to the authentication-server by Google
 var CLIENT_ID = "122670225392-t8qh5ennnrqim2j7vrbc3vfa1td3sq5d.apps.googleusercontent.com"; 
 var CLIENT_SECRET = "EE3T2nrELtAGGJIl9stXQq-2";
 var CLIENT_REDIRECT_URI = "http://localhost";
-var CLIENT_SCOPES = "https://www.googleapis.com/auth/youtube";
+var CLIENT_SCOPES = "https://www.googleapis.com/auth/userinfo.profile";
 
 
 var $loginButton = $('#login a');
@@ -116,11 +116,16 @@ var app = {
 			app.authUser();
 		});
 		
-		
 		$loginStatus.append('Überprüfe, ob schon ein Token vorhanden ist. <br>');
 		
-		auth.getToken().done(function(data) {
-			app.showSomething(data);
+		auth.getToken().then(function() {
+			$.getScript("js/channel.js", function() {
+				return getUser({
+					access_token: localStorage.access_token
+				});
+			});
+		}).done(function(data) {
+			$loginStatus.append('Hello: ' + data.name);
 		}).fail(function() {
 			//app.onButtonclick();
 		});
@@ -141,19 +146,6 @@ var app = {
 		$('#logout a').on('click', auth.revokeToken());
 		$loginStatus.append('<br>Du bist eingeloggt. Auth code: ' + data.access_token);
 		$loginStatus.append('<br>Local Auth Code: ' + localStorage.access_token);
-		
-		$.getScript('js/channel.js' , function(){
-			$loginStatus.append('<br>Successfully loaded \"Channel.js\"');
-			
-			getUser({access_token: localStorage.access_token,
-				    part: id,
-				    mine: true}).done(function(user) {
-				    	$loginStatus.append('<br>Hello: ' + user.name);
-				    }).fail(function(response) {
-				    	$loginStatus.append("<br>Fail: " + response.responseJSON);
-				    });
-			
-		});
 	}
 };
 
