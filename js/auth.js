@@ -148,7 +148,7 @@ var app = {
 			getUser({access_token: localStorage.access_token,
 				    part: id,
 				    mine: true}).done(function(user) {
-				    	$loginStatus.append('<br>Hello: ' + user.id);
+				    	$loginStatus.append('<br>Hello: ' + user.name);
 				    }).fail(function(response) {
 				    	$loginStatus.append("<br>Fail: " + response.responseJSON);
 				    });
