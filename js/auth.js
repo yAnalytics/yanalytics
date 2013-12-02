@@ -99,7 +99,7 @@ var auth = {
         localStorage.expires_at = expiresAt;
 	},
 	
-	getUser: function() {
+	getUser: function(options) {
 		return $.getJSON('https://www.googleapis.com/oauth2/v1/userinfo', options);
 	},
 	
@@ -119,10 +119,8 @@ var app = {
 		$loginStatus.append('Überprüfe, ob schon ein Token vorhanden ist. <br>');
 		
 		auth.getToken().then(function() {
-			$loginStatus.append('Test');
-			return auth.getUser({access_token: localStorage.access_token});
-		}).done(function(data) {
-			$loginStatus.append('Hello: ' + data.name);
+		}).done(function() {
+			app.showSomething();
 		}).fail(function() {
 			app.authUser();
 		});
@@ -143,6 +141,17 @@ var app = {
 		$('#logout a').on('click', auth.revokeToken());
 		$loginStatus.append('<br>Du bist eingeloggt. Auth code: ' + data.access_token);
 		$loginStatus.append('<br>Local Auth Code: ' + localStorage.access_token);
+		
+		auth.getToken().then(function() {
+			return auth.getUser({access_token: localStorage.access_token});
+		}).done(function(data) {
+			$loginStatus.append('Hello: ' + data.name);
+		}).fail(function() {
+			$loginStatus.append('Es ist ein Fehler aufgetreten.');
+			app.authUser();
+		});
+		
+		
 	}
 };
 
