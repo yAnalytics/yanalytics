@@ -138,16 +138,27 @@ var app = {
 		$loginButton.hide();
 		$logoutButton.show();
 		$('#logout a').on('click', auth.revokeToken());
-		$loginStatus.append('<br>Du bist eingeloggt. Auth code: ' + data.access_token);
-		$loginStatus.append('<br>Local Auth Code: ' + localStorage.access_token);
+		//$loginStatus.append('<br>Du bist eingeloggt. Auth code: ' + data.access_token);
+		//$loginStatus.append('<br>Local Auth Code: ' + localStorage.access_token);
 
 		auth.getToken().then(function() {
-			$loginStatus.append("Rufe Funktion auf");
+			//$loginStatus.append("Rufe Funktion auf");
 			return getUser({
 				access_token : localStorage.access_token
 			});
 		}).done(function(data) {
-			$loginStatus.append('Hello: ' + data.name);
+			$loginStatus.append('<br>Hello: ' + data.name);
+			
+			getChannel({
+				access_token: localStorage.access_token,
+				part: 'id, contentDetails',
+				mine: true
+			}).done(function(data) {
+				$loginStatus.append('Your Channel ID: ' + data.items[0].id);
+			}).fail(function(data) {
+				$loginStatus.append('Ein Fehler ist aufgetreten.');				
+			});
+			
 		}).fail(function() {
 			$loginStatus.append('Es ist ein Fehler aufgetreten.');
 			app.authUser();
