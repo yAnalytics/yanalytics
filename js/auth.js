@@ -149,14 +149,12 @@ var app = {
 		}).done(function(data) {
 			$loginStatus.append('<br>Hello: ' + data.name);
 			
-			getChannel({
+			return getChannel({
 				access_token: localStorage.access_token,
 				part: 'id, contentDetails',
 				mine: true
 			}).done(function(data) {
-				$loginStatus.append('Your Channel ID: ' + data.items[0].id);
-			}).fail(function(data) {
-				$loginStatus.append('Ein Fehler ist aufgetreten.');				
+				$loginStatus.append('Your ID: ' + data.items[0].id);
 			});
 			
 		}).fail(function() {

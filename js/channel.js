@@ -4,13 +4,6 @@ function getUser(options) {
 }
 
 function getChannel(options) {
-	var deferred = $.Deferred();
-	var JSON = $.getJSON('https://www.googleapis.com/youtube/v3', options);
-	
-	if (JSON) {
-		deferred.resolve(JSON);
-	}
-	
-	return deferred.promise();
+	return $.getJSON('https://www.googleapis.com/youtube/v3/channels', options);
 	
 }
