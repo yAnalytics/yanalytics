@@ -1,11 +1,16 @@
 $(document).on('deviceready', function() {
-    var $loginButton = $('#google_login');
+    var $loginButton = $('#login a');
     var $loginStatus = $('#login p');
-	var $requestText = $('#login h1');
+	var $logoutButton = $('#logout a');
 	
-	$requestText.html('Initialize');
+	$logoutButton.hide();
 	
-    $.getScript('auth.js' , function() {
-		$requestText.html('Success!');
+	user.checkToken().done(function() {
+		$loginButton.hide();
+		$loginStatus.append('Du bist erfolgreich eingeloggt.');
+	}).fail(function() {
+		user.login();
 	});
+	
+	
 });
