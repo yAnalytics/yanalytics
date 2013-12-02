@@ -119,11 +119,7 @@ var app = {
 		$loginStatus.append('Überprüfe, ob schon ein Token vorhanden ist. <br>');
 		
 		auth.getToken().then(function() {
-			$.getScript("js/channel.js", function() {
-				return getUser({
-					access_token: localStorage.access_token
-				});
-			});
+			return getUser({access_token: localStorage.access_token});
 		}).done(function(data) {
 			$loginStatus.append('Hello: ' + data.name);
 		}).fail(function() {
