@@ -124,7 +124,7 @@ var app = {
 		}).done(function(data) {
 			$loginStatus.append('Hello: ' + data.name);
 		}).fail(function() {
-			$loginStatus.append("FAIL!");
+			app.authUser();
 		});
 	},
 	
