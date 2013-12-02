@@ -5,16 +5,6 @@
  With this file it's possible to connect to the authentication-server by Google
  */
 
-var CLIENT_ID = "122670225392-t8qh5ennnrqim2j7vrbc3vfa1td3sq5d.apps.googleusercontent.com";
-var CLIENT_SECRET = "EE3T2nrELtAGGJIl9stXQq-2";
-var CLIENT_REDIRECT_URI = "http://localhost";
-var CLIENT_SCOPES =  'https://www.googleapis.com/auth/yt-analytics.readonly https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/youtube.readonly';
-
-var $loginButton = $('#login a');
-var $loginStatus = $('#login p');
-
-var $logoutButton = $('#logout a');
-
 var auth = {
 	authorize : function() {
 		var deferred = $.Deferred();
@@ -100,68 +90,6 @@ var auth = {
 		localStorage.expires_at = expiresAt;
 	},
 
-	/*getUser: function(options) {
-	 return $.getJSON('https://www.googleapis.com/oauth2/v1/userinfo', options);
-	 },*/
-
 	revokeToken : function() {
-		$loginStatus.append('Du bist nun in der revokeToken() Funktion!');
 	}
 };
-
-var app = {
-	init : function() {
-		$logoutButton.hide();
-
-		$('#login a').on('click', function() {
-			app.authUser();
-		});
-
-		$loginStatus.append('Überprüfe, ob schon ein Token vorhanden ist. <br>');
-
-		auth.getToken().done(function() {
-			app.showSomething();
-		}).fail(function() {
-			app.authUser();
-		});
-	},
-
-	authUser : function() {
-		auth.authorize().done(function(data) {
-			app.showSomething(data);
-		}).fail(function() {
-			app.onButtonClick();
-		});
-	},
-
-	showSomething : function(data) {
-		$loginButton.hide();
-		$logoutButton.show();
-		$('#logout a').on('click', auth.revokeToken());
-
-		auth.getToken().then(function() {
-			return getUser({
-				access_token : localStorage.access_token
-			});
-		}).done(function(data) {
-			$loginStatus.append('<br>Hello: ' + data.name);
-			
-			return getChannel({
-				access_token: localStorage.access_token,
-				part: 'id, contentDetails',
-				mine: true
-			}).done(function(data) {
-				$loginStatus.append('Your ID: ' + data.items[0].id);
-			});
-			
-		}).fail(function() {
-			$loginStatus.append('Es ist ein Fehler aufgetreten.');
-			app.authUser();
-		});
-
-	}
-};
-
-$(document).on('deviceready', function() {
-	app.init();
-}); 
