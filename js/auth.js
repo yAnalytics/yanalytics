@@ -2,15 +2,13 @@
 // © (2013) Dennis Nemec & Raphael Hauger
 
 /*
-With this file it's possible to connect to the authentication-server by Google 
-*/
+ With this file it's possible to connect to the authentication-server by Google
+ */
 
-
-var CLIENT_ID = "122670225392-t8qh5ennnrqim2j7vrbc3vfa1td3sq5d.apps.googleusercontent.com"; 
+var CLIENT_ID = "122670225392-t8qh5ennnrqim2j7vrbc3vfa1td3sq5d.apps.googleusercontent.com";
 var CLIENT_SECRET = "EE3T2nrELtAGGJIl9stXQq-2";
 var CLIENT_REDIRECT_URI = "http://localhost";
 var CLIENT_SCOPES = "https://www.googleapis.com/auth/userinfo.profile";
-
 
 var $loginButton = $('#login a');
 var $loginStatus = $('#login p');
@@ -18,35 +16,35 @@ var $loginStatus = $('#login p');
 var $logoutButton = $('#logout a');
 
 var auth = {
-	authorize: function() {
+	authorize : function() {
 		var deferred = $.Deferred();
-		
+
 		// define the Url with the required parameters.
 		var authUrl = "https://accounts.google.com/o/oauth2/auth?" + $.param({
-			client_id: CLIENT_ID,
-			redirect_uri: CLIENT_REDIRECT_URI,
-			response_type: "code",
-			scope: CLIENT_SCOPES
+			client_id : CLIENT_ID,
+			redirect_uri : CLIENT_REDIRECT_URI,
+			response_type : "code",
+			scope : CLIENT_SCOPES
 		});
-		
-		var authWindow = window.open(authUrl, '_blank' , 'location=no,toolbar=no');
-		
+
+		var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
+
 		$(authWindow).on('loadstart', function(e) {
 			var url = e.originalEvent.url;
 			var code = /\?code=(.+)$/.exec(url);
 			var error = /\?error=(.+)$/.exec(url);
-			
+
 			if (code || error) {
 				authWindow.close();
 			}
-			
+
 			if (code) {
-				$.post('https://accounts.google.com/o/oauth2/token' , {
-					code: code[1],
-					client_id: CLIENT_ID,
-					client_secret: CLIENT_SECRET,
-					redirect_uri: CLIENT_REDIRECT_URI,
-					grant_type: 'authorization_code'
+				$.post('https://accounts.google.com/o/oauth2/token', {
+					code : code[1],
+					client_id : CLIENT_ID,
+					client_secret : CLIENT_SECRET,
+					redirect_uri : CLIENT_REDIRECT_URI,
+					grant_type : 'authorization_code'
 				}).done(function(data) {
 					console.log('The login was successful');
 					auth.setToken(data);
@@ -57,103 +55,108 @@ var auth = {
 				});
 			} else if (error) {
 				deferred.reject({
-					error: error[1]
+					error : error[1]
 				});
 			}
 		});
-		
+
 		return deferred.promise();
 	},
-	
-	getToken: function() {
-        var deferred = $.Deferred();
 
-        if (new Date().getTime() < localStorage.expires_at) {
-            deferred.resolve({
-                access_token: localStorage.access_token
-            });
-        } else if (localStorage.refresh_token) {
-            $.post('https://accounts.google.com/o/oauth2/token', {
-                refresh_token: localStorage.refresh_token,
-                client_id: CLIENT_ID,
-                client_secret: CLIENT_SECRET,
-                grant_type: 'refresh_token'
-            }).done(function(data) {
-                auth.setToken(data);
-                deferred.resolve(data);
-            }).fail(function(response) {
-                deferred.reject(response.responseJSON);
-            });
-        } else {
-            deferred.reject();
-        }
+	getToken : function() {
+		var deferred = $.Deferred();
 
-        return deferred.promise();
+		if (new Date().getTime() < localStorage.expires_at) {
+			deferred.resolve({
+				access_token : localStorage.access_token
+			});
+		} else if (localStorage.refresh_token) {
+			$.post('https://accounts.google.com/o/oauth2/token', {
+				refresh_token : localStorage.refresh_token,
+				client_id : CLIENT_ID,
+				client_secret : CLIENT_SECRET,
+				grant_type : 'refresh_token'
+			}).done(function(data) {
+				auth.setToken(data);
+				deferred.resolve(data);
+			}).fail(function(response) {
+				deferred.reject(response.responseJSON);
+			});
+		} else {
+			deferred.reject();
+		}
+
+		return deferred.promise();
 	},
-	
-	setToken: function(data) {
-		localStorage.access_token = data.access_token; // access token 
-		localStorage.refresh_token = data.refresh_token || localStorage.refresh_token; // refresh token
-		
-		var expiresAt = new Date().getTime() + parseInt(data.expires_in, 10) * 1000 - 60000; // expires in
-        localStorage.expires_at = expiresAt;
+
+	setToken : function(data) {
+		localStorage.access_token = data.access_token;
+		// access token
+		localStorage.refresh_token = data.refresh_token || localStorage.refresh_token;
+		// refresh token
+
+		var expiresAt = new Date().getTime() + parseInt(data.expires_in, 10) * 1000 - 60000;
+		// expires in
+		localStorage.expires_at = expiresAt;
 	},
-	
+
 	/*getUser: function(options) {
-		return $.getJSON('https://www.googleapis.com/oauth2/v1/userinfo', options);
-	},*/
-	
-	revokeToken: function() {
+	 return $.getJSON('https://www.googleapis.com/oauth2/v1/userinfo', options);
+	 },*/
+
+	revokeToken : function() {
 		$loginStatus.append('Du bist nun in der revokeToken() Funktion!');
 	}
 };
 
 var app = {
-	init : function() {	
+	init : function() {
 		$logoutButton.hide();
-		
+
 		$('#login a').on('click', function() {
 			app.authUser();
 		});
-		
+
 		$loginStatus.append('Überprüfe, ob schon ein Token vorhanden ist. <br>');
-		
+
 		auth.getToken().done(function() {
 			app.showSomething();
 		}).fail(function() {
 			app.authUser();
 		});
 	},
-	
+
 	authUser : function() {
-		auth.authorize()
-		.done(function(data) {
+		auth.authorize().done(function(data) {
 			app.showSomething(data);
 		}).fail(function() {
 			app.onButtonClick();
 		});
 	},
-	
+
 	showSomething : function(data) {
 		$loginButton.hide();
 		$logoutButton.show();
 		$('#logout a').on('click', auth.revokeToken());
 		$loginStatus.append('<br>Du bist eingeloggt. Auth code: ' + data.access_token);
 		$loginStatus.append('<br>Local Auth Code: ' + localStorage.access_token);
-		
+
 		auth.getToken().then(function() {
-			return getUser({access_token: localStorage.access_token});
+			$.getScript('js/channel.js', function() {
+				return getUser({
+					access_token : localStorage.access_token
+					});
+			});
 		}).done(function(data) {
 			$loginStatus.append('Hello: ' + data.name);
 		}).fail(function() {
 			$loginStatus.append('Es ist ein Fehler aufgetreten.');
 			app.authUser();
 		});
-		
-		
+
 	}
 };
 
-$(document).on('deviceready' , function() {
+$(document).on('deviceready', function() {
 	app.init();
-});
+}); 
