@@ -124,7 +124,7 @@ var app = {
 		}).done(function(data) {
 			$loginStatus.append('Hello: ' + data.name);
 		}).fail(function() {
-			//app.onButtonclick();
+			$loginStatus.append("FAIL!");
 		});
 	},
 	
