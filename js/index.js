@@ -5,6 +5,10 @@ $(document).on('deviceready', function() {
 	
 	$logoutButton.hide();
 	
+	$(loginButton).on('click', function() {
+		user.login();
+	});
+	
 	user.checkToken().done(function() {
 		$loginButton.hide();
 		$loginStatus.append('Du bist erfolgreich eingeloggt.');
