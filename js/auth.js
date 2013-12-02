@@ -99,8 +99,8 @@ var auth = {
         localStorage.expires_at = expiresAt;
 	},
 	
-	removeLocalToken: function() {
-		
+	getUser: function() {
+		return $.getJSON('https://www.googleapis.com/oauth2/v1/userinfo', options);
 	},
 	
 	revokeToken: function() {
@@ -120,7 +120,7 @@ var app = {
 		
 		auth.getToken().then(function() {
 			$loginStatus.append('Test');
-			return getUser({access_token: localStorage.access_token});
+			return auth.getUser({access_token: localStorage.access_token});
 		}).done(function(data) {
 			$loginStatus.append('Hello: ' + data.name);
 		}).fail(function() {
