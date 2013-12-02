@@ -118,8 +118,7 @@ var app = {
 		
 		$loginStatus.append('Überprüfe, ob schon ein Token vorhanden ist. <br>');
 		
-		auth.getToken().then(function() {
-		}).done(function() {
+		auth.getToken().done(function() {
 			app.showSomething();
 		}).fail(function() {
 			app.authUser();
