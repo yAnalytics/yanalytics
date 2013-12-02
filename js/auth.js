@@ -142,10 +142,9 @@ var app = {
 		$loginStatus.append('<br>Local Auth Code: ' + localStorage.access_token);
 
 		auth.getToken().then(function() {
-			$.getScript('js/channel.js', function() {
-				return getUser({
-					access_token : localStorage.access_token
-					});
+			$loginStatus.append("Rufe Funktion auf");
+			return getUser({
+				access_token : localStorage.access_token
 			});
 		}).done(function(data) {
 			$loginStatus.append('Hello: ' + data.name);
