@@ -99,9 +99,9 @@ var auth = {
         localStorage.expires_at = expiresAt;
 	},
 	
-	getUser: function(options) {
+	/*getUser: function(options) {
 		return $.getJSON('https://www.googleapis.com/oauth2/v1/userinfo', options);
-	},
+	},*/
 	
 	revokeToken: function() {
 		$loginStatus.append('Du bist nun in der revokeToken() Funktion!');
@@ -142,7 +142,7 @@ var app = {
 		$loginStatus.append('<br>Local Auth Code: ' + localStorage.access_token);
 		
 		auth.getToken().then(function() {
-			return auth.getUser({access_token: localStorage.access_token});
+			return getUser({access_token: localStorage.access_token});
 		}).done(function(data) {
 			$loginStatus.append('Hello: ' + data.name);
 		}).fail(function() {
