@@ -7,7 +7,7 @@ var app = {
 		 $logoutButton.hide();
 		 
 		 $loginButton.on('click', function() {
-		 auth.authorize();
+		 	auth.authorize();
 		 });
 		 
 		 auth.checkToken().done(function() {
