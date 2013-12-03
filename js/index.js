@@ -12,7 +12,7 @@ var app = {
 		 
 		 user.checkToken().done(function() {
 		 	$loginButton.hide();
-		 	app.view();
+		 	app.init();
 		 });
 	},
 	
