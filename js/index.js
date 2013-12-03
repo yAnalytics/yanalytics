@@ -7,7 +7,7 @@ var app = {
 		 $logoutButton.hide();
 		 
 		 $loginButton.on('click', function() {
-		 	auth.authorize();
+		 	app.showLogin();
 		 });
 		 
 		 auth.checkToken().done(function() {
@@ -15,8 +15,16 @@ var app = {
 		 	$loginStatus.append('Du bist erfolgreich eingeloggt.');
 		 	app.showView();
 		 	}).fail(function() {
-		 		auth.authorize();
-		 		});
+		 		app.showLogin();
+		 	});
+	},
+	
+	showLogin : function() {
+		user.login().done(function(data) {
+			app.showView();
+		}).fail(function(data) {
+			$loginButton.append('Ein Fehler ist aufgetreten: <br>' + data.error);
+		});
 	},
 	
 	showView: function() {
