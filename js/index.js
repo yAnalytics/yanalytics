@@ -10,7 +10,7 @@ var app = {
 		 	app.showLogin();
 		 });
 		 
-		 auth.checkToken().done(function() {
+		 user.checkToken().done(function() {
 		 	$loginButton.hide();
 		 	$loginStatus.append('Du bist erfolgreich eingeloggt.');
 		 	app.showView();
