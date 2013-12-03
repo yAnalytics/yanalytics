@@ -12,6 +12,8 @@ var app = {
 		 
 		 auth.getToken().done(function() {
 		 	$loginButton.hide();
+		 	
+		 	// Does not work!
 		 	app.view();
 		 }).fail(function() {
 		 	app.showLogin();
