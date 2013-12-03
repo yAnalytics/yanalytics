@@ -14,7 +14,6 @@ var app = {
 		 	$loginButton.hide();
 		 	$loginStatus.append('Du bist erfolgreich eingeloggt.');
 		 	app.showView();
-		 	$loginStatus.append('Du bist erfolgreich eingeloggt. 22');
 		 	}).fail(function() {
 		 		app.showLogin();
 		 	});
@@ -22,7 +21,6 @@ var app = {
 	
 	showLogin : function() {
 		user.login().done(function(data) {
-			app.showView();
 			app.init();
 		}).fail(function(data) {
 			$loginButton.append('Ein Fehler ist aufgetreten: <br>' + data.error);
@@ -30,14 +28,7 @@ var app = {
 	},
 	
 	showView: function() {
-		$loginStatus.append('Test');
-		getUser({
-			access_token: localStorage.access_token
-		}).done(function(data) {
-			$loginStatus.append('Hallo ' + data.name);
-		}).fail(function() {
-			app.init();
-		});
+		$loginStatus.append('Du bist in der showView() funktion!');
 	}
 	
 };
