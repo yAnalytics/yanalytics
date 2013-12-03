@@ -5,14 +5,15 @@ $(document).on('deviceready', function() {
 	
 	$logoutButton.hide();
 	
-	$(loginButton).on('click', function() {
+	$loginButton.on('click', function() {
 		user.login();
 	});
 	
-	user.checkToken().done(function() {
+	auth.getToken().done(function() {
 		$loginButton.hide();
 		$loginStatus.append('Du bist erfolgreich eingeloggt.');
 	}).fail(function() {
+		$loginStatus.append('Nicht richtig.');
 		auth.authorize();
 	});
 	
