@@ -10,10 +10,10 @@
 
 var user = {
 	login: function() {
-		auth.authorize();
+		return auth.authorize();
 	},
 	
 	checkToken: function() {
-		auth.getToken();	
+		return auth.getToken();	
 	}
 };
