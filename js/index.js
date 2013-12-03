@@ -14,6 +14,7 @@ var app = {
 		 	$loginButton.hide();
 		 	$loginStatus.append('Du bist erfolgreich eingeloggt.');
 		 	app.showView();
+		 	$loginStatus.append('Du bist erfolgreich eingeloggt. 22');
 		 	}).fail(function() {
 		 		app.showLogin();
 		 	});
@@ -21,6 +22,7 @@ var app = {
 	
 	showLogin : function() {
 		user.login().done(function(data) {
+			app.showView();
 			app.init();
 		}).fail(function(data) {
 			$loginButton.append('Ein Fehler ist aufgetreten: <br>' + data.error);
