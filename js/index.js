@@ -13,7 +13,7 @@ $(document).on('deviceready', function() {
 		$loginButton.hide();
 		$loginStatus.append('Du bist erfolgreich eingeloggt.');
 	}).fail(function() {
-		user.login();
+		auth.authorize();
 	});
 	
 	
