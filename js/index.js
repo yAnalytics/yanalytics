@@ -11,8 +11,9 @@ var app = {
 		 });
 		 
 		 user.checkToken().done(function() {
-		 	$loginButton.hide();
-		 	app.init();
+		 	//$loginButton.hide();
+		 	app.view();
+		 	app.showLogin();
 		 });
 	},
 	
