@@ -12,8 +12,7 @@ var app = {
 		 
 		 user.checkToken().done(function() {
 		 	$loginButton.hide();
-		 	//$loginStatus.append('Du bist erfolgreich eingeloggt.');
-		 	app.showView();
+		 	app.view();
 		 });
 	},
 	
@@ -25,10 +24,9 @@ var app = {
 		});
 	},
 	
-	showView: function() {
-		$loginStatus.append('Du bist in der showView() funktion!');
-	}
-	
+		view : function() {
+			$loginStatus.html('HEY');
+	},
 };
 
 
