@@ -10,9 +10,10 @@ var app = {
 		 	app.showLogin();
 		 });
 		 
-		 user.checkToken().done(function() {
-		 	//$loginButton.hide();
+		 auth.getToken().done(function() {
+		 	$loginButton.hide();
 		 	app.view();
+		 }).fail(function() {
 		 	app.showLogin();
 		 });
 	},
