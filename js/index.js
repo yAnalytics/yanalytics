@@ -21,13 +21,14 @@ var app = {
 	
 	showLogin : function() {
 		user.login().done(function(data) {
-			app.showView();
+			app.init();
 		}).fail(function(data) {
 			$loginButton.append('Ein Fehler ist aufgetreten: <br>' + data.error);
 		});
 	},
 	
 	showView: function() {
+		$loginStatus.append('Test');
 		getUser({
 			access_token: localStorage.access_token
 		}).done(function(data) {
