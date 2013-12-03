@@ -9,12 +9,12 @@ $(document).on('deviceready', function() {
 		user.login();
 	});
 	
-	auth.getToken().done(function() {
+	user.checkToken().done(function() {
 		$loginButton.hide();
 		$loginStatus.append('Du bist erfolgreich eingeloggt.');
 	}).fail(function() {
 		$loginStatus.append('Nicht richtig.');
-		auth.authorize();
+		user.login();
 	});
 	
 	
