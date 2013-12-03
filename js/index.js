@@ -13,7 +13,7 @@ var app = {
 		 user.checkToken().done(function() {
 		 	$loginButton.hide();
 		 	$loginStatus.append('Du bist erfolgreich eingeloggt.');
-		 	app.showView();
+		 	app.showLogin();
 		 	}).fail(function() {
 		 		app.showLogin();
 		 	});
