@@ -12,9 +12,7 @@ var app = {
 		 
 		 auth.getToken().done(function(data) {
 		 	$loginStatus.append(" asdfasdf" + data.access_token);
-		 	app.view().done(function(data) {
-		 		$loginStatus.append('Hmm.. irgendetwas stimmt nicht..');
-		 	});
+		 	app.showLogin();
 		 }).fail(function(data) {
 		 	$loginStatus.append('xD');
 		 });
