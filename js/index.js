@@ -10,16 +10,8 @@ var app = {
 		 	app.showLogin();
 		 });
 		 
-		 auth.getToken().then(function() {
-		 	$loginButton.hide();
-		 	
-		 	// Does not work!
+		 auth.getToken().done(function(data) {
 		 	app.view();
-		 }).fail(function() {
-		 	app.showLogin();
-		 }).done(function() {
-		 	app.view();
-		 	$loginStatus.append('It works!');
 		 });
 	},
 	
@@ -31,8 +23,8 @@ var app = {
 		});
 	},
 	
-		view : function() {
-			$loginStatus.html('HEY');
+	view : function() {
+		$loginStatus.html('HEY');
 	},
 };
 
