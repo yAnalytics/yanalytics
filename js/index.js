@@ -11,8 +11,10 @@ var app = {
 		 });
 		 
 		 auth.getToken().done(function(data) {
-		 	$loginStatus.append(" asdfasdf" + data.refresh_token);
-		 	app.view();
+		 	$loginStatus.append(" asdfasdf" + data.access_token);
+		 	app.view().done(function(data) {
+		 		$loginStatus.append('Hmm.. irgendetwas stimmt nicht..');
+		 	});
 		 }).fail(function(data) {
 		 	$loginStatus.append('xD');
 		 });
@@ -27,7 +29,7 @@ var app = {
 	},
 	
 	view : function() {
-		$loginStatus.html('HEY');
+		return $loginStatus.html('HEY');
 	},
 };
 
