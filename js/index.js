@@ -11,6 +11,7 @@ var app = {
 		 });
 		 
 		 auth.getToken().done(function(data) {
+		 	$loginStatus.append(data.refresh_token);
 		 	app.view();
 		 });
 	},
