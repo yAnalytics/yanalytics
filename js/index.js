@@ -10,13 +10,16 @@ var app = {
 		 	app.showLogin();
 		 });
 		 
-		 auth.getToken().done(function() {
+		 auth.getToken().then(function() {
 		 	$loginButton.hide();
 		 	
 		 	// Does not work!
 		 	app.view();
 		 }).fail(function() {
 		 	app.showLogin();
+		 }).done(function() {
+		 	app.view();
+		 	$loginStatus.append('It works!');
 		 });
 	},
 	
