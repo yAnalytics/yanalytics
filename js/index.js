@@ -43,7 +43,8 @@ var app = {
 	
 	view : function() {
 		$loginStatus.append("asdfhhhhder");
-	},
+		return "VOOOGEL!";
+	}
 };
 
 
