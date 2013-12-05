@@ -43,14 +43,8 @@ var app = {
 	},
 	
 	view : function() {
-		$deferred = $.Deferred();
-		
-		if(0==0) {
-			$loginStatus.append('<br>KKO');
-			$deferred.resolve();
-		}
-		
-		return $deferred.promise();
+		$loginButton.show();
+		$loginStatus.append('asdf');
 	}
 };
 
