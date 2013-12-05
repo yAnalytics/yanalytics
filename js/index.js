@@ -4,7 +4,6 @@ var $logoutButton = $('#logout a');
 
 var app = {
 	init : function() {
-		 
 		 var status = false;
 		 
 		 $logoutButton.hide();
@@ -14,12 +13,10 @@ var app = {
 		 });
 		 
 		 auth.getToken().done(function(data) {
-		 	$loginStatus.append(" asdfasdf" + data.access_token);
 		 	getUser({
 		 		access_token: data.access_token
 		 	}).done(function(data) {
 		 		$loginStatus.append('Hallo ' + data.name);
-		 		app.view();
 		 	}).fail(function(data) {
 		 		$loginStatus.append('Error: ' + data.error);
 		 	});
@@ -38,7 +35,9 @@ var app = {
 	},
 	
 	view : function() {
-		$loginStatus.append('<br>Halllooo :D es klappt ');
+		channel.id().done(function(data) {
+			$loginStatus.append('Deine ID ist: ' + data);
+		});
 	}
 };
 

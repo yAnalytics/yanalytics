@@ -15,5 +15,9 @@ var user = {
 	
 	checkToken: function() {
 		return auth.getToken();	
+	},
+	
+	getName: function(options) {
+		return $.getJSON('https://www.googleapis.com/oauth2/v1/userinfo', options);
 	}
 };
