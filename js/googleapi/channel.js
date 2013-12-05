@@ -7,7 +7,7 @@
 
 var channel = {	
 id : function() {
-	deferred = $.Deferred();
+	var deferred = $.Deferred();
 		
 	$.getJSON('https://www.googleapis.com/youtube/v3/channels', 
 	{

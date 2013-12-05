@@ -100,10 +100,14 @@ var auth = {
 		
 		// send a post element
 		$.post(link + localStorage.access_token).done(function(data) {
-			$loginStatus.append('Es hat funktioniert!');
+			$loginStatus.append('Es hat funktioniert!' + data);
 			Console.log('Access Token successfully deleted.');
-			auth.removeToken();
-			deferred.resolve(data);
+			auth.removeToken().done(function() {
+				$loginStatus.append('Daten erfolgreich gelöscht.');
+				deferred.resolve();
+			}).fail(function() {
+				$loginStatus.append('Hat nicht funktioniert....');
+			});;
 		}).fail(function(data) {
 			Console.log('Evtl. ist kein Token vorhanden.');
 			$loginStatus.append('Es ist ein Fehler aufgetreten: ' + data.error);
