@@ -6,11 +6,11 @@ var app = {
 	init : function() {
 		 $logoutButton.hide();
 		 
-		 loginButton.on('click', function() {
+		 $loginButton.on('click', function() {
 		 	app.showLogin();
 		 });
 		 
-		 logoutButton.on('click', function() {
+		 $logoutButton.on('click', function() {
 		 	auth.revokeToken().done(function(data) {
 		 		app.init();
 		 	}).fail(function(data) {
