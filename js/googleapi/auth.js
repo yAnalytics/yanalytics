@@ -95,7 +95,7 @@ var auth = {
 	},
 
 	revokeToken : function() {
-		deferred = $.Deferred();
+		var deferred = $.Deferred();
 		var link = "https://accounts.google.com/o/oauth2/revoke?token=";
 		
 		// send a post element
