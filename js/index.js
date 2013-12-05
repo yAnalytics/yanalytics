@@ -6,6 +6,7 @@ var app = {
 	init : function() {
 		 $logoutButton.hide();
 		 $loginButton.show();
+		 $loginStatus.html = "";
 		 
 		 $loginButton.on('click', function() {
 		 	app.showLogin();
