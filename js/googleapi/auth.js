@@ -89,7 +89,23 @@ var auth = {
 		// expires in
 		localStorage.expires_at = expiresAt;
 	},
+	
+	removeToken : function() {
+		localStorage.clear();
+	},
 
 	revokeToken : function() {
+		deferred = $.Deferred();
+		var link = "https://accounts.google.com/o/oauth2/revoke?token=";
+		
+		// send a post element
+		$.post(link + localStorage.access_token).done(function(data) {
+			Console.log('Access Token successfully deleted.');
+			deferred.resolve(data);
+		}).fail(function(data) {
+			Console.log('Evtl. ist kein Token vorhanden.');
+		}) ;
+		
+		return deferred.promise();
 	}
 };

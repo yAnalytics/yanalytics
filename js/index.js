@@ -4,16 +4,24 @@ var $logoutButton = $('#logout a');
 
 var app = {
 	init : function() {
-		 
-		 var status = false;
-		 
 		 $logoutButton.hide();
 		 
-		 $loginButton.on('click', function() {
+		 loginButton.on('click', function() {
 		 	app.showLogin();
 		 });
 		 
+		 logoutButton.on('click', function() {
+		 	auth.revokeToken().done(function(data) {
+		 		app.init();
+		 	}).fail(function(data) {
+		 		$loginStatus.append('Es ist ein Fehler aufgetreten.');
+		 	});
+		 });
+		 
 		 auth.getToken().done(function(data) {
+		 	$loginButton.hide();
+		 	$logoutButton.show();
+		 	
 		 	user.getName({
 		 		access_token: data.access_token
 		 	}).done(function(data) {
@@ -22,9 +30,9 @@ var app = {
 		 	}).fail(function(data) {
 		 		$loginStatus.append('Error: ' + data.error);
 		 	});
-		 	status = true;
+		 	
 		 }).fail(function(data) {
-		 	$loginStatus.append('xD');
+		 	$loginStatus.append('Logge dich bitte ein, um deine Statistiken aufrufen zu können.');
 		 });
 	},
 	
