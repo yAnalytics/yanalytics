@@ -14,8 +14,7 @@ var app = {
 		 });
 		 
 		 auth.getToken().done(function(data) {
-		 	$loginStatus.append(" asdfasdf" + data.access_token);
-		 	getUser({
+		 	user.getName({
 		 		access_token: data.access_token
 		 	}).done(function(data) {
 		 		$loginStatus.append('Hallo ' + data.name);
@@ -38,8 +37,11 @@ var app = {
 	},
 	
 	view : function() {
-		$loginButton.hide();
-		$loginStatus.append('asdf');
+		channel.id().done(function(data) {
+			$loginStatus.append('Deine ID ist: ' + data);
+		}).fail(function() {
+			$loginStatus.append('Es ist ein Fehler aufgetreten.');
+		});
 	}
 };
 
