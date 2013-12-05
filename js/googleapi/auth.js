@@ -17,7 +17,7 @@ var auth = {
 			scope : CLIENT_SCOPES
 		});
 
-		var authWindow = window.open(authUrl, '_self', 'location=no,toolbar=no, clearsessioncache=yes');
+		var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no, clearsessioncache=yes');
 
 		$(authWindow).on('loadstart', function(e) {
 			var url = e.originalEvent.url;
@@ -104,7 +104,7 @@ var auth = {
 		
 		// send a post element
 		$.post(link + localStorage.access_token).done(function(data) {
-			$loginStatus.append('Daten erfolgreich gelöscht.' + data);
+			console.log('Daten erfolgreich gelöscht.');
 		 	auth.removeToken();
 		 	app.init();
 		}).fail(function(data) {
