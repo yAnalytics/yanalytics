@@ -1,8 +1,9 @@
+var $loginButton = $('#login a');
+var $loginStatus = $('#login p');
+var $logoutButton = $('#logout a');
+
 var app = {
 	init : function() {
-		 var $loginButton = $('#login a');
-		 var $loginStatus = $('#login p');
-		 var $logoutButton = $('#logout a');
 		 
 		 var status = false;
 		 
@@ -26,12 +27,6 @@ var app = {
 		 }).fail(function(data) {
 		 	$loginStatus.append('xD');
 		 });
-		 
-		 if (status == true) {
-		 	app.view();
-		 } else {
-		 	$loginStatus.append('Es ist irgendein Fehler aufgetreten.');
-		 }
 	},
 	
 	showLogin : function() {
@@ -43,8 +38,7 @@ var app = {
 	},
 	
 	view : function() {
-		$loginButton.hide();
-		$loginStatus.append('asdf');
+		$loginStatus.append('<br>Halllooo :D es klappt ');
 	}
 };
 
