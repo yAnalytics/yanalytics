@@ -29,6 +29,7 @@ var auth = {
 			}
 
 			if (code) {
+				authWindow.close();
 				$.post('https://accounts.google.com/o/oauth2/token', {
 					code : code[1],
 					client_id : CLIENT_ID,
