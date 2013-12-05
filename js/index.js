@@ -3,12 +3,7 @@ var $loginStatus = $('#login p');
 var $logoutButton = $('#logout a');
 
 var app = {
-	init : function() {
-		 super.init();
-		 super.clearCache();
-		 super.loadUrl("file:///android_asset/www/index.html");
-		
-		
+	init : function() {	
 		 $logoutButton.hide();
 		 $loginButton.show();
 		 $loginStatus.html('');
