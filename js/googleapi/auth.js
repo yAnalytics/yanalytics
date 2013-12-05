@@ -99,6 +99,13 @@ var auth = {
 		var link = "https://accounts.google.com/o/oauth2/revoke?token=";
 		
 		// send a post element
-		return $.post(link + localStorage.access_token);
+		$.post(link + localStorage.access_token).done(function(data) {
+			$loginStatus.append('Daten erfolgreich gelöscht.' + data);
+		 	auth.removeToken();
+		 	app.init();
+		}).fail(function(data) {
+			Console.log(data.error);
+			$loginStatus.append('Es ist ein Fehler aufgetreten!');
+		});
 	}
 };
