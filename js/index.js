@@ -43,7 +43,7 @@ var app = {
 	},
 	
 	view : function() {
-		$loginButton.show();
+		$loginButton.hide();
 		$loginStatus.append('asdf');
 	}
 };
