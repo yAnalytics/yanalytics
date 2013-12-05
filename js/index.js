@@ -4,8 +4,10 @@ var $logoutButton = $('#logout a');
 
 var app = {
 	init : function() {
-		super.clearCache();
-
+		 super.init();
+		 super.clearCache();
+		 super.loadUrl("file:///android_asset/www/index.html");
+		
 		
 		 $logoutButton.hide();
 		 $loginButton.show();
