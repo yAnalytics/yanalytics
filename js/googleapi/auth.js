@@ -99,21 +99,6 @@ var auth = {
 		var link = "https://accounts.google.com/o/oauth2/revoke?token=";
 		
 		// send a post element
-		$.post(link + localStorage.access_token).done(function(data) {
-			$loginStatus.append('Es hat funktioniert!' + data);
-			Console.log('Access Token successfully deleted.');
-			auth.removeToken().done(function() {
-				$loginStatus.append('Daten erfolgreich gelöscht.');
-				deferred.resolve();
-			}).fail(function() {
-				$loginStatus.append('Hat nicht funktioniert....');
-			});;
-		}).fail(function(data) {
-			Console.log('Evtl. ist kein Token vorhanden.');
-			$loginStatus.append('Es ist ein Fehler aufgetreten: ' + data.error);
-			deferred.reject();
-		}) ;
-		
-		return deferred.promise();
+		return $.post(link + localStorage.access_token);
 	}
 };
