@@ -49,6 +49,10 @@ var auth = {
 				});
 			}
 		});
+		
+		authWindow.addEventListener('exit', function(event) {
+			authWindow.close();
+		});
 
 		return deferred.promise();
 	},
