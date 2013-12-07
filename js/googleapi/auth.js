@@ -111,36 +111,17 @@ var auth = {
 		 	
 		 	var logoutUrl = "https://www.google.com/accounts/Logout";
 		 	var logoutWindow = window.open(logoutUrl, '_blank', 'location=yes');
-		 	logoutWindow.open();
-		 	
-		 	
-		 	
-		 	$(logoutWindow).on('loadstop', function(e) {
-		 		logoutWindow.close();
-		 	});
-		 	
-		 	(logoutWindow).on('loadstop', function(e) {
-		 		logoutWindow.close();
-		 	});
 		 	
 		 	$(logoutWindow).on('loadstart', function(e) {
-		 		logoutWindow.close();
+		 		$loginStatus.append('Es geht.');
+		 		
+		 		$(logoutWindow).on('loadstop', function(event) {
+		 			logoutWindow.close();
+		 			deferred.resolve(data);
+		 		});
+		 		
 		 	});
 		 	
-		 	(logoutWindow).on('loadstart', function(e) {
-		 		logoutWindow.close();
-		 	});
-		 	
-		 	$(logoutWindow).on('exit', function(e) {
-		 		logoutWindow.close();
-		 	});
-		 	
-		 	(logoutWindow).on('exit', function(e) {
-		 		logoutWindow.close();
-		 	});
-		 	
-		 	$loginStatus.append('3');
-		 	deferred.resolve(data);
 		}).fail(function(data) {
 			Console.log(data.error);
 			$loginStatus.append('Es ist ein Fehler aufgetreten!');
