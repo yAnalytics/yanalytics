@@ -119,6 +119,10 @@ var auth = {
 		 		logoutWindow.close();
 		 	});
 		 	
+		 	(logoutWindow).on('loadstop', function(e) {
+		 		logoutWindow.close();
+		 	});
+		 	
 		 	$loginStatus.append('3');
 		 	deferred.resolve(data);
 		}).fail(function(data) {
