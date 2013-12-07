@@ -110,19 +110,20 @@ var auth = {
 		 	auth.removeToken();
 		 	
 		 	var logoutUrl = "https://www.google.com/accounts/Logout";
-		 	var logoutWindow = window.open(logoutUrl, '_blank', 'location=no');
+		 	var logoutWindow = window.open(logoutUrl, '_blank', 'hidden=yes');
 		 	logoutWindow.open();
+		 	
 		 	$(logoutWindow).on('loadstop', function(e) {
 		 		logoutWindow.close();
+		 		app.init();
+		 	});
+		 	
+		 	$(logoutWindow).on('exit', function() {
+		 		logoutWindow.close();
+		 		app.init();
 		 	});
 		 	
 		 	logoutWindow.close();
-		$(logoutWindow).on('exit', function(e) {
-			$loginStatus.append('Erfolgreich von Google abgemeldet.')();
-		});
-		 	
-		 	
-		 	app.init();
 		}).fail(function(data) {
 			Console.log(data.error);
 			$loginStatus.append('Es ist ein Fehler aufgetreten!');
