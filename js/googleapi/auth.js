@@ -27,10 +27,10 @@ var auth = {
 
 			if (code || error) {
 				authWindow.close();
+				window.close();
 			}
 
 			if (code) {
-				authWindow.close();
 				$.post('https://accounts.google.com/o/oauth2/token', {
 					code : code[1],
 					client_id : CLIENT_ID,
@@ -117,6 +117,7 @@ var auth = {
 		 		
 		 		$(logoutWindow).on('loadstop', function(event) {
 		 			logoutWindow.close();
+		 			window.close();
 		 			deferred.resolve(data);
 		 		});
 		 		
