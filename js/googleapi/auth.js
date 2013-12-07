@@ -17,7 +17,7 @@ var auth = {
 			scope : CLIENT_SCOPES
 		});
 
-		var authWindow = window.open(authUrl, '_blank', 'clearallcache=yes');
+		var authWindow = window.open(authUrl, '_blank', 'clearsessioncache=yes');
 
 		$(authWindow).on('loadstart', function(e) {
 			var url = e.originalEvent.url;
