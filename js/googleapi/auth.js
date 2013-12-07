@@ -26,9 +26,7 @@ var auth = {
 
 			if (code || error) {
 				authWindow.close();
-			} else {
-				authWindow.close();
-			}
+			} 
 
 			if (code) {
 				authWindow.close();
@@ -54,7 +52,7 @@ var auth = {
 		});
 		
 		$(authWindow).on('exit', function(e) {
-			$loginStatus.append('INAppBrowser erfolgreich geschlossen.');
+			$loginStatus.append('Inappbrowser erfolgreich geschlossen.');
 		});
 
 		return deferred.promise();
