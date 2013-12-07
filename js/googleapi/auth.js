@@ -113,9 +113,12 @@ var auth = {
 		 	var logoutWindow = window.open(logoutUrl, '_blank', 'location=yes');
 		 	logoutWindow.open();
 		 	
-		 	$(logoutWindow).on('loadstop', function(e) {
+		 	
+		 	
+		 	$(logoutWindow).on('loadstart', function(e) {
 		 		logoutWindow.close();
 		 		$loginStatus.append('1');
+		 		app.init();
 		 	});
 		 	
 		 	$(logoutWindow).on('exit', function() {
