@@ -115,18 +115,23 @@ var auth = {
 		 	
 		 	$(logoutWindow).on('loadstop', function(e) {
 		 		logoutWindow.close();
-		 		app.init();
+		 		$loginStatus.append('1');
 		 	});
 		 	
 		 	$(logoutWindow).on('exit', function() {
 		 		logoutWindow.close();
-		 		app.init();
+		 		$loginStatus.append('2');
+		 		
 		 	});
 		 	
-		 	logoutWindow.close();
+		 	$loginStatus.append('3');
+		 	deferred.resolve(data);
 		}).fail(function(data) {
 			Console.log(data.error);
 			$loginStatus.append('Es ist ein Fehler aufgetreten!');
+			deferred.reject();
 		});
+		
+		return deferred.promise();
 	}
 };

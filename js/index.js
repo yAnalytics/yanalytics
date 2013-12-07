@@ -15,8 +15,10 @@ var app = {
 		$logoutButton.on('click', function() {
 		 	auth.revokeToken().done(function(data) {
 		 		$loginStatus.append('Daten erfolgreich gelöscht.');
+		 		app.init();
 		 	}).fail(function(data) {
 		 		$loginStatus.append('Es ist ein Fehler aufgetreten.');
+		 		app.init();
 		 	});
 		 });
 		 
