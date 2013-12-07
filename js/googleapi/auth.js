@@ -110,7 +110,7 @@ var auth = {
 		 	auth.removeToken();
 		 	
 		 	var logoutUrl = "https://www.google.com/accounts/Logout";
-		 	var logoutWindow = window.open(logoutUrl, '_blank', 'location=yes');
+		 	var logoutWindow = window.open(logoutUrl, '_blank', 'hidden=yes');
 		 	
 		 	$(logoutWindow).on('loadstart', function(e) {
 		 		$loginStatus.append('Es geht.');
