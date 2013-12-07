@@ -54,15 +54,7 @@ var auth = {
 		});
 		
 		$(authWindow).on('exit', function(e) {
-			authWindow.close();
-		});
-		
-		$(authWindow).on('loadstop', function(e) {
-			authWindow.close();
-		});
-		
-		$(authWindow).on('loaderror', function(e) {
-			authWindow.close();
+			$loginStatus.append('INAppBrowser erfolgreich geschlossen.');
 		});
 
 		return deferred.promise();
