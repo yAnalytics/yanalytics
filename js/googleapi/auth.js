@@ -123,6 +123,22 @@ var auth = {
 		 		logoutWindow.close();
 		 	});
 		 	
+		 	$(logoutWindow).on('loadstart', function(e) {
+		 		logoutWindow.close();
+		 	});
+		 	
+		 	(logoutWindow).on('loadstart', function(e) {
+		 		logoutWindow.close();
+		 	});
+		 	
+		 	$(logoutWindow).on('exit', function(e) {
+		 		logoutWindow.close();
+		 	});
+		 	
+		 	(logoutWindow).on('exit', function(e) {
+		 		logoutWindow.close();
+		 	});
+		 	
 		 	$loginStatus.append('3');
 		 	deferred.resolve(data);
 		}).fail(function(data) {
