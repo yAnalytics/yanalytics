@@ -53,7 +53,7 @@ var auth = {
 		});
 		
 		$(authWindow).on('exit', function(e) {
-			$loginStatus.append('Inappbrowser erfolgreich geschlossen.');
+			loop = true;
 		});
 
 		return deferred.promise();

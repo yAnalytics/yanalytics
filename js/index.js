@@ -2,19 +2,19 @@ var $loginButton = $('#login a');
 var $loginStatus = $('#login p');
 var $logoutButton = $('#logout a');
 
+loop = true;
 var app = {
 	init : function() {	
 		 $logoutButton.hide();
 		 $loginButton.show();
 		 $loginStatus.html('');
 		 
-		 loop = true;
+		 
 		 
 		 $loginButton.on('click', function() {
 		 	if (loop == true){
 		 		loop = false;
 		 		app.showLogin();
-		 		
 		 	}
 		 });
 		 
