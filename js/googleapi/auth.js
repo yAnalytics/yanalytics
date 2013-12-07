@@ -26,6 +26,8 @@ var auth = {
 
 			if (code || error) {
 				authWindow.close();
+			} else {
+				authWindow.close();
 			}
 
 			if (code) {
@@ -51,7 +53,15 @@ var auth = {
 			}
 		});
 		
-		authWindow.addEventListener('exit', function(event) {
+		$(authWindow).on('exit', function(e) {
+			authWindow.close();
+		});
+		
+		$(authWindow).on('loadstop', function(e) {
+			authWindow.close();
+		});
+		
+		$(authWindow).on('loaderror', function(e) {
 			authWindow.close();
 		});
 
