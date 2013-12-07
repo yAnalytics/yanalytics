@@ -115,15 +115,8 @@ var auth = {
 		 	
 		 	
 		 	
-		 	$(logoutWindow).on('loadstart', function(e) {
+		 	$(logoutWindow).on('loadstop', function(e) {
 		 		logoutWindow.close();
-		 		$loginStatus.append('1');
-		 		app.init();
-		 	});
-		 	
-		 	$(logoutWindow).on('exit', function() {
-		 		logoutWindow.close();
-		 		$loginStatus.append('2');
 		 	});
 		 	
 		 	$loginStatus.append('3');
