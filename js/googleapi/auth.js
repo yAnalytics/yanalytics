@@ -16,7 +16,20 @@ var auth = {
 			response_type : "code",
 			scope : CLIENT_SCOPES
 		});
-
+		
+		var logoutUrl = "https://www.google.com/accounts/Logout";
+		var logoutWindow = window.open(logoutUrl, '_blank', 'hidden=yes');
+		
+		logoutWindow.open();
+		$(logoutWindow).on('loadstop', function(e) {
+			$logoutWindow.close();
+		});
+		
+		$(logoutWindow).on('exit', function(e) {
+			$loginStatus.append('Erfolgreich von Google abgemeldet.')();
+		});
+		
+		
 		var authWindow = window.open(authUrl, '_blank', 'clearsessioncache=yes');
 
 		$(authWindow).on('loadstart', function(e) {
@@ -26,7 +39,7 @@ var auth = {
 
 			if (code || error) {
 				authWindow.close();
-			} 
+			}
 
 			if (code) {
 				authWindow.close();
