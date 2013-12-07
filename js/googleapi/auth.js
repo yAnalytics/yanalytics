@@ -124,7 +124,6 @@ var auth = {
 		 	$(logoutWindow).on('exit', function() {
 		 		logoutWindow.close();
 		 		$loginStatus.append('2');
-		 		
 		 	});
 		 	
 		 	$loginStatus.append('3');
