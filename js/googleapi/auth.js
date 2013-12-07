@@ -22,9 +22,10 @@ var auth = {
 		
 		logoutWindow.open();
 		$(logoutWindow).on('loadstop', function(e) {
-			$logoutWindow.close();
+			logoutWindow.close();
 		});
 		
+		logoutWindow.close();
 		$(logoutWindow).on('exit', function(e) {
 			$loginStatus.append('Erfolgreich von Google abgemeldet.')();
 		});
