@@ -18,7 +18,7 @@ var auth = {
 		});
 
 		
-		var authWindow = window.open(authUrl, '_blank', 'clearsessioncache=yes');
+		var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
 
 		$(authWindow).on('loadstart', function(e) {
 			var url = e.originalEvent.url;
@@ -30,6 +30,7 @@ var auth = {
 			}
 
 			if (code) {
+				authWindow.close();
 				$.post('https://accounts.google.com/o/oauth2/token', {
 					code : code[1],
 					client_id : CLIENT_ID,
