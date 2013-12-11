@@ -27,7 +27,6 @@ var auth = {
 
 			if (code || error) {
 				authWindow.close();
-				window.close();
 			}
 
 			if (code) {
@@ -51,11 +50,11 @@ var auth = {
 				});
 			}
 		});
-		
+/*	
 		$(authWindow).on('exit', function(e) {
 			loop = true;
 		});
-
+*/
 		return deferred.promise();
 	},
 

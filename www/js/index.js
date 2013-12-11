@@ -12,10 +12,7 @@ var app = {
 		 
 		 
 		 $loginButton.on('click', function() {
-		 	if (loop == true){
-		 		loop = false;
-		 		app.showLogin();
-		 	}
+		 	app.showLogin();
 		 });
 		 
 		$logoutButton.on('click', function() {
