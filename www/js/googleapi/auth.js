@@ -66,6 +66,7 @@ var auth = {
 			deferred.resolve({
 				access_token : localStorage.access_token
 			});
+			$loginButton.undind();
 		} else if (localStorage.refresh_token) {
 			$.post('https://accounts.google.com/o/oauth2/token', {
 				refresh_token : localStorage.refresh_token,
@@ -75,6 +76,7 @@ var auth = {
 			}).done(function(data) {
 				auth.setToken(data);
 				deferred.resolve(data);
+				$loginButton.undind();
 			}).fail(function(response) {
 				deferred.reject(response.responseJSON);
 			});

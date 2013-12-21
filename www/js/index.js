@@ -9,9 +9,6 @@ var app = {
 		 $loginButton.show();
 		 $loginStatus.html('');
 		 
-		 $logoutButton.unbind();
-		 $loginButton.unbind();
-		 
 		 $loginButton.on('click', function() {
 		 	app.showLogin();
 		 });
@@ -20,9 +17,11 @@ var app = {
 			$loginStatus.append('Löschen');
 		 	auth.revokeToken().done(function(data) {
 		 		$loginStatus.append('Daten erfolgreich gelöscht.');
+		 		$logoutButton.unbind();
 		 		app.init();
 		 	}).fail(function(data) {
 		 		$loginStatus.append('Es ist ein Fehler aufgetreten.');
+		 		$logoutButton.unbind();
 		 		app.init();
 		 	});
 		 });
@@ -43,9 +42,6 @@ var app = {
 		 }).fail(function(data) {
 		 	$loginStatus.append('Logge dich bitte ein, um deine Statistiken aufrufen zu können.');
 		 });
-		 
-		 $logoutButton.unbind();
-		 $loginButton.unbind();
 	},
 	
 	showLogin : function() {
