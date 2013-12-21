@@ -113,13 +113,12 @@ var auth = {
 		 	var logoutWindow = window.open(logoutUrl, '_blank', 'hidden=yes');
 		 	
 		 	$(logoutWindow).on('loadstart', function(e) {		 		
-		 		$(logoutWindow).on('loadstop', function(event) {
-		 			logoutWindow.close();
-		 			window.close();
-		 			deferred.resolve(data);
-		 		});
-		 		
+		 		logoutWindow.close();
+		 		window.close(); 		 		
 		 	});
+		 	
+		 	delete logoutWindow;
+		 	deferred.resolve(data); 
 		 	
 		}).fail(function(data) {
 			Console.log(data.error);
