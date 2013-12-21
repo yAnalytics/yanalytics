@@ -118,6 +118,7 @@ var auth = {
 		 	});
 		 	
 		 	delete logoutWindow;
+		 	logoutWindow = null;
 		 	deferred.resolve(data); 
 		 	
 		}).fail(function(data) {
