@@ -112,9 +112,7 @@ var auth = {
 		 	var logoutUrl = "https://www.google.com/accounts/Logout";
 		 	var logoutWindow = window.open(logoutUrl, '_blank', 'hidden=yes');
 		 	
-		 	$(logoutWindow).on('loadstart', function(e) {
-		 		$loginStatus.append('Es geht.');
-		 		
+		 	$(logoutWindow).on('loadstart', function(e) {		 		
 		 		$(logoutWindow).on('loadstop', function(event) {
 		 			logoutWindow.close();
 		 			window.close();
