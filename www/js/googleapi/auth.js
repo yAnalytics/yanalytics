@@ -26,11 +26,11 @@ var auth = {
 			var error = /\?error=(.+)$/.exec(url);
 
 			if (code || error) {
-				authWindow.close();
+				//authWindow.close();
 			}
 
 			if (code) {
-				authWindow.close();
+				//authWindow.close();
 				$.post('https://accounts.google.com/o/oauth2/token', {
 					code : code[1],
 					client_id : CLIENT_ID,
