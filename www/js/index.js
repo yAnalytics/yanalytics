@@ -9,7 +9,8 @@ var app = {
 		 $loginButton.show();
 		 $loginStatus.html('');
 		 
-		 
+		 $logoutButton.unbind();
+		 $loginButton.unbind();
 		 
 		 $loginButton.on('click', function() {
 		 	app.showLogin();
@@ -42,6 +43,9 @@ var app = {
 		 }).fail(function(data) {
 		 	$loginStatus.append('Logge dich bitte ein, um deine Statistiken aufrufen zu können.');
 		 });
+		 
+		 $logoutButton.unbind();
+		 $loginButton.unbind();
 	},
 	
 	showLogin : function() {
