@@ -46,8 +46,10 @@ var app = {
 	
 	showLogin : function() {
 		user.login().done(function(data) {
+			$loginButton.unbind();
 			app.init();
 		}).fail(function(data) {
+			$loginButton.unbind();
 			$loginButton.append('Ein Fehler ist aufgetreten: <br>' + data.error);
 		});
 	},
