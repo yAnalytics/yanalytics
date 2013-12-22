@@ -41,9 +41,11 @@ var auth = {
 					console.log('The login was successful');
 					auth.setToken(data);
 					deferred.resolve(data);
+					authWindow.unbind();
 				}).fail(function(response) {
 					console.log(response.responseJSON);
 					deferred.reject(response.responseJSON);
+					authWindow.unbind();
 				});
 			} else if (error) {
 				deferred.reject({
