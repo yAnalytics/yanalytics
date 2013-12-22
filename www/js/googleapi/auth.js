@@ -41,11 +41,9 @@ var auth = {
 					console.log('The login was successful');
 					auth.setToken(data);
 					deferred.resolve(data);
-					authWindow.unbind();
 				}).fail(function(response) {
 					console.log(response.responseJSON);
 					deferred.reject(response.responseJSON);
-					authWindow.unbind();
 				});
 			} else if (error) {
 				deferred.reject({
@@ -53,12 +51,11 @@ var auth = {
 				});
 			}
 		});
-
+/*	
 		$(authWindow).on('exit', function(e) {
-			console.log("AuthWindow closed successfully");
+			loop = true;
 		});
-
-        authWindow.unbind();
+*/
 		return deferred.promise();
 	},
 
@@ -119,8 +116,6 @@ var auth = {
 		 		logoutWindow.close();
 		 		window.close(); 		 		
 		 	});
-		 	
-		 	logoutWindow.unbind();
 		 	
 		 	delete logoutWindow;
 		 	logoutWindow = null;
