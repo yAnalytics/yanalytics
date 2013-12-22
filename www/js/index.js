@@ -9,11 +9,11 @@ var app = {
 		 $loginButton.show();
 		 $loginStatus.html('');
 		 
-		 $loginButton.on('click', function() {
+		 $loginButton.unbind().on('click', function() {
 		 	app.showLogin();
 		 });
 		 
-		$logoutButton.on('click', function() {
+		$logoutButton.unbind().on('click', function() {
 			$loginStatus.append('Löschen');
 		 	auth.revokeToken().done(function(data) {
 		 		$loginStatus.append('Daten erfolgreich gelöscht.');
