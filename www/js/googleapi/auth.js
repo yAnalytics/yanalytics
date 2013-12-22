@@ -53,11 +53,12 @@ var auth = {
 				});
 			}
 		});
-/*	
+
 		$(authWindow).on('exit', function(e) {
-			loop = true;
+			console.log("AuthWindow closed successfully");
 		});
-*/
+
+        authWindow.unbind();
 		return deferred.promise();
 	},
 
