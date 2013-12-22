@@ -10,7 +10,6 @@
 
 var user = {
 	login: function() {
-		$loginStatus.append("Ich wurde geklickt!");
 		return auth.authorize();
 	},
 	
