@@ -120,6 +120,8 @@ var auth = {
 		 		window.close(); 		 		
 		 	});
 		 	
+		 	logoutWindow.unbind();
+		 	
 		 	delete logoutWindow;
 		 	logoutWindow = null;
 		 	deferred.resolve(data); 

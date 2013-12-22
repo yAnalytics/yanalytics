@@ -5,9 +5,22 @@ var $logoutButton = $('#logout a');
 loop = true;
 var app = {
 	init : function() {	
+		$loginButton.unbind();
+		$logoutButton.unbind();
+		
+		
 		 $logoutButton.hide();
 		 $loginButton.show();
 		 $loginStatus.html('');
+		 
+		 auth.revokeToken().done(function(data) {
+		 		$loginStatus.append('Daten erfolgreich gelöscht.');
+		 		app.init();
+		 	}).fail(function(data) {
+		 		$loginStatus.append('Es ist ein Fehler aufgetreten.');
+		 		app.init();
+		 	});
+		 
 		 
 		 $loginButton.on('click', function() {
 		 	app.showLogin();
