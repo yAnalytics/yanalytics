@@ -15,7 +15,7 @@ var app = {
 		 
 		$logoutButton.unbind().on('click', function() {
 		 	auth.revokeToken().done(function(data) {
-		 		$loginStatus.append('Daten erfolgreich gelöscht.');
+		 		console.log('Daten erfolgreich gelöscht.');
 		 		$logoutButton.unbind();
 		 		app.init();
 		 	}).fail(function(data) {
