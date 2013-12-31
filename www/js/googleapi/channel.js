@@ -13,7 +13,7 @@ id : function() {
 	{
 		access_token : localStorage.access_token,
 		mine: true,
-		part: 'id'
+		part: 'id,snippet'
 	}
 	).done(function(data) {
 		tmp = data.items[0].id;
