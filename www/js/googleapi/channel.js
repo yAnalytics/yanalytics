@@ -42,7 +42,7 @@ viewsLastMonth: function() {
 	   $.getJSON('https://www.googleapis.com/youtube/analytics/v1/reports', 
 	   {
 	   	ids: 'channel==' + localStorage.channelId, 
-	   	acccess_token: localStorage.access_token,
+	   	access_token: localStorage.access_token,
 	    'start-date': '2013-10-01',
 	   	'end-date': '2013-12-31',
 	   	metrics: 'views'
