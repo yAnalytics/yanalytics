@@ -70,6 +70,7 @@ var app = {
 		   
 		   with(x) {
 		   	setDate(1);
+		   	setDay(getDay());
 		   	setMonth(getMonth() - 1);
 		   }
 		   
