@@ -53,7 +53,7 @@ viewsLastMonth: function() {
 	   	$loginStatus.append("Views: " + data.rows[0]);
 	   	deferred.resolve(data.rows);
 	   }).fail(function(response) {
-	   	$loginStatus.append("Something went wrong: " + response.message);
+	   	$loginStatus.append("Something went wrong: " + response.error[2] + response.code + response.message);
 	   	deferred.resolve(response);
 	   });
     } else {
