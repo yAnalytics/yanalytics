@@ -33,6 +33,7 @@ logo : function(options) {
 },
 
 viewsLastMonth: function() {
+	$loginStatus.append('Yeah! Ich bin in der viewsLastMonth-Funktion!');
     var deferred = $.Deferred();
 	   $.getJSON('https://www.googleapis.com/youtube/analytics/v1/reports', 
 	   {
@@ -48,6 +49,7 @@ viewsLastMonth: function() {
 	   	$loginStatus.append(data.rows[0]);
 	   	deferred.resolve(data.rows);
 	   }).fail(function(data) {
+	   	$loginStatus.append('Irgendetwas ist schief gelaufen.');
 	   	deferred.reject();
 	   });
    
