@@ -34,8 +34,11 @@ logo : function(options) {
 
 viewsLastMonth: function() {
     var deferred = $.Deferred();
+    $loginStatus.append("Bin drin!");
     
     if (localStorage.channelId) {
+    	$loginStatus.append("Lokale ID ist vorhanden");
+    	
 	   $.getJSON('https://www.googleapis.com/youtube/analytics/v1/reports', 
 	   {
 	   	ids: 'channel==' + localStorage.channelId, 
@@ -50,7 +53,7 @@ viewsLastMonth: function() {
 	   	$loginStatus.append("Views: " + data.rows[0]);
 	   	deferred.resolve(data.rows);
 	   }).fail(function(error) {
-	   	deferred.resolve(error);
+	   	deferred.reject(error);
 	   });
     } else {
     	deferred.reject();
