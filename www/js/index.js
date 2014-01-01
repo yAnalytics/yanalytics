@@ -57,6 +57,7 @@ var app = {
 		channel.id().done(function(data) {
 			$loginStatus.append('<br>Deine ID ist: ' + data);
 			localStorage.channelId = data;
+			$loginStatus.append(localStorage.access_token);
 			$loginStatus.append('<br>Die lokale ID: ' + localStorage.channelId);
 			
 		    /*channel.viewsLastMonth().done(function(response) {
