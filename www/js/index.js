@@ -61,7 +61,6 @@ var app = {
 			
 		    channel.viewsLastMonth().done(function(response) {
 				$loginStatus.append('Es hat geklappt');
-				$loginStatus.append('xD: ' + response.toString());
 			}).fail(function(error) {
 				$loginStatus.append('Es gab einen Fehler: <br>');
 		});

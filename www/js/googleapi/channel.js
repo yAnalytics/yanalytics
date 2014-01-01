@@ -43,7 +43,6 @@ viewsLastMonth: function() {
 	   {
 	   	ids: 'channel==' + localStorage.channelId, 
 	   	acccess_token: localStorage.access_token,
-	   	key: API_KEY,
 	    'start-date': '2013-10-01',
 	   	'end-date': '2013-12-31',
 	   	metrics: 'views'
@@ -53,7 +52,7 @@ viewsLastMonth: function() {
 	   	$loginStatus.append("Views: " + data.rows[0]);
 	   	deferred.resolve(data.rows);
 	   }).fail(function(response) {
-	   	$loginStatus.append("Something went wrong: " + response);
+	   	$loginStatus.append("Something went wrong:");
 	   	deferred.resolve(response);
 	   });
     } else {
