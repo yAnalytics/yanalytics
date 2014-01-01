@@ -38,7 +38,7 @@ viewsLastMonth: function() {
 	   {
 	   	ids: 'channel==UCIZ97TeaJnB43tQnjgAhAiA', 
 	   	acccess_token: localStorage.access_token,
-	   	key: CLIENT_ID,
+	   	key: 'AIzaSyDpN1tfxXXS_GsRw50jaj-2TIKLKYHjnTk',
 	    'start-date': '2013-10-01',
 	   	'end-date': '2013-12-31',
 	   	metrics: 'views'

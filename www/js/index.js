@@ -57,7 +57,7 @@ var app = {
 		channel.id().done(function(data) {
 			$loginStatus.append('<br>Deine ID ist: ' + data);
 			localStorage.channelId = data;
-			$loginStatus.append('Die lokale ID: ' + localStorage.channelId);
+			$loginStatus.append('<br>Die lokale ID: ' + localStorage.channelId);
 		}).fail(function() {
 			$loginStatus.append('Es ist ein Fehler aufgetreten.');
 		});
