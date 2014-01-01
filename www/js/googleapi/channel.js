@@ -35,10 +35,10 @@ logo : function(options) {
 viewsLastMonth: function() {
     var deferred = $.Deferred();
     
-    if (localStorage.channelId) {
+    if (true) {
 	   $.getJSON('https://www.googleapis.com/youtube/analytics/v1/reports', 
 	   {
-	   	ids: 'channel==' + localStorage.channelId, 
+	   	ids: 'channel==UCIZ97TeaJnB43tQnjgAhAiA', 
 	   	acccess_token: localStorage.access_token,
 	   	key: CLIENT_ID,
 	    'start-date': '2013-10-01',
