@@ -66,6 +66,7 @@ var app = {
 		   });*/
 		  
 		  JSON.stringify(channel.views());
+		  $loginStatus.append(channel.views());
 			
 		}).fail(function() {
 			$loginStatus.append('Es ist ein Fehler aufgetreten.');
