@@ -34,8 +34,6 @@ logo : function(options) {
 
 viewsLastMonth: function() {
     var deferred = $.Deferred();
-    
-    if (true) {
 	   $.getJSON('https://www.googleapis.com/youtube/analytics/v1/reports', 
 	   {
 	   	ids: 'channel==UCIZ97TeaJnB43tQnjgAhAiA', 
@@ -52,10 +50,7 @@ viewsLastMonth: function() {
 	   }).fail(function(data) {
 	   	deferred.reject();
 	   });
-    } else {
-    	deferred.reject();
-    }
-    
+   
     return deferred.promise();
 }
 
