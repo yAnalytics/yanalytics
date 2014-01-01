@@ -35,7 +35,7 @@ logo : function(options) {
 viewsLastMonth: function() {
     var deferred = $.Deferred();
     
-    if (localStorage.channelId != null) {
+    if (localStorage.channelId) {
 	   $.getJSON('https://www.googleapis.com/youtube/analytics/v1/reports', 
 	   {
 	   	ids: 'channel==' + localStorage.channelId, 
@@ -52,6 +52,8 @@ viewsLastMonth: function() {
 	   }).fail(function(data) {
 	   	deferred.reject();
 	   });
+    } else {
+    	deferred.reject();
     }
     
     return deferred.promise();
