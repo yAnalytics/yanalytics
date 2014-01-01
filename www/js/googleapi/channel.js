@@ -49,8 +49,8 @@ viewsLastMonth: function() {
 	   ).done(function(data) {
 	   	$loginStatus.append("Views: " + data.rows[0]);
 	   	deferred.resolve(data.rows);
-	   }).fail(function(data) {
-	   	deferred.reject();
+	   }).fail(function(error) {
+	   	deferred.resolve(error);
 	   });
     } else {
     	deferred.reject();
