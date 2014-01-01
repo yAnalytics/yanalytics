@@ -43,7 +43,7 @@ viewsLastMonth: function() {
 	   {
 	   	ids: 'channel==' + localStorage.channelId, 
 	   	acccess_token: localStorage.access_token,
-	   	key: CLIENT_ID,
+	   	key: API_KEY,
 	    'start-date': '2013-10-01',
 	   	'end-date': '2013-12-31',
 	   	metrics: 'views'
