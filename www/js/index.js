@@ -65,6 +65,15 @@ var app = {
 			}).fail(function(error) {
 				$loginStatus.append('Es gab einen Fehler: <br>');
 		   });
+		   
+		   var x = new Date();
+		   
+		   with(x) {
+		   	setDate(1);
+		   	setMonth(getMonth() - 1);
+		   }
+		   
+		   $loginStatus.append("<br>Die Zeit: " + x);
 		 
 			
 		}).fail(function() {
