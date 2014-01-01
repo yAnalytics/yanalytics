@@ -58,16 +58,16 @@ var app = {
 			$loginStatus.append('<br>Deine ID ist: ' + data);
 			localStorage.channelId = data;
 			$loginStatus.append('Die lokale ID: ' + localStorage.channelId);
-			
-			viewsLastMonth().done(function(response) {
+		}).fail(function() {
+			$loginStatus.append('Es ist ein Fehler aufgetreten.');
+		});
+		
+		viewsLastMonth().done(function(response) {
 				$loginStatus.append('Es hat geklappt.');
 			}).fail(function(error) {
 				$loginStatus.append('Es gab einen Fehler.');
 			});
 			
-		}).fail(function() {
-			$loginStatus.append('Es ist ein Fehler aufgetreten.');
-		});
 	}
 };
 
