@@ -54,7 +54,7 @@ viewsLastMonth: function() {
 	   	deferred.resolve(data.rows);
 	   }).fail(function(error) {
 	   	$loginStatus.append("Something went wrong");
-	   	deferred.reject(error);
+	   	deferred.resolve(error);
 	   });
     } else {
     	deferred.reject();
