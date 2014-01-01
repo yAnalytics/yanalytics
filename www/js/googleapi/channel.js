@@ -50,7 +50,6 @@ viewsLastMonth: function() {
 	   	$loginStatus.append("Views: " + data.rows[0]);
 	   	deferred.resolve(data.rows);
 	   }).fail(function(error) {
-	   	$loginStatus.append("Fehler" + error.errors.message);
 	   	deferred.resolve(error);
 	   });
     } else {
