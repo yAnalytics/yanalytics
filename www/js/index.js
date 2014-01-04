@@ -86,5 +86,13 @@ var app = {
 
 
 $(document).on('deviceready', function() {
-	app.init();	
-});
+	//app.init();
+	
+	
+	
+
+		
+});	
+
+var channelInfo = new channelData();
+alert("channelInfo.getVideoData.title");

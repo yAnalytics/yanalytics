@@ -34,10 +34,8 @@ logo : function(options) {
 
 viewsLastMonth: function() {
     var deferred = $.Deferred();
-    $loginStatus.append("Bin drin!");
     
     if (localStorage.channelId) {
-    	$loginStatus.append("Lokale ID ist vorhanden");
     	
 	   $.getJSON('https://www.googleapis.com/youtube/analytics/v1/reports', 
 	   {
@@ -49,7 +47,7 @@ viewsLastMonth: function() {
 	   }
 	   
 	   ).done(function(data) {
-	   	$loginStatus.append("Views: " + data.rows[0]);
+	   	$loginStatus.append("<br><b>Views: " + data.rows[0] + "</b>");
 	   	deferred.resolve(data.rows);
 	   }).fail(function(response) {
 	   	$loginStatus.append("Something went wrong:");
@@ -65,6 +63,26 @@ viewsLastMonth: function() {
 getVideoIdByName: function() {
 	
 }
-
-
 };
+
+function channelData() {
+	// properties	
+	this.title = "";
+	this.id = "";
+	this.uploads = ""; // ID of the upload's playlist
+	this.videoAmount = ""; // integer with the amount of videos
+	this.status = ""; 
+	this.description = "";
+	this.thumbnail = ""; // It should actually be an array with multiple resolutions (small, medium,large)
+	this.subscribers = ""; // integer with the amount of subscribers
+	this.playlistAmount = ""; // integer with the amount of playlists
+	this.playlists = ""; // array with id of all playlists
+	// functions 
+	this.getVideoIdByName = "";
+	this.getVideoNameById = "";
+	this.getVideoStatistics = ""; // call VideoStatistics class (ID of video is needed)
+	this.getVideoData = new videoData(id); // call VideoData class (ID of video is needed)
+}
+
+var channelInfo = new channelData();
+channelInfo.getVideoData.title;
