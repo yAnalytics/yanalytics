@@ -43,7 +43,7 @@ var app = {
 		 	$loginStatus.append('Logge dich bitte ein, um deine Statistiken aufrufen zu können.');
 		 });
 		 
-		 $(loginButton).off();
+		 $loginButton.off();
 	},
 	
 	showLogin : function() {
@@ -61,6 +61,7 @@ var app = {
 			
 			$loginStatus.append('<br>Deine ID ist: ' + channelInfo.id());
 			localStorage.channelId = data;
+			$loginStatus.append("Access:  <br>" + localStorage.access_token);
 			$loginStatus.append('<br>Die lokale ID: ' + localStorage.channelId);
 			
 		    channel.viewsLastMonth().done(function(response) {
