@@ -43,7 +43,7 @@ var app = {
 		 	$loginStatus.append('Logge dich bitte ein, um deine Statistiken aufrufen zu können.');
 		 });
 		 
-		 $loginButton.off();
+		 $(loginButton).off();
 	},
 	
 	showLogin : function() {
