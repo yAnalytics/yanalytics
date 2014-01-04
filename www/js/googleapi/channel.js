@@ -65,7 +65,7 @@ getVideoIdByName: function() {
 }
 };
 
-function channelData() {
+function channelData(id) {
 	// properties	
 	this.title = "";
 	this.id = "";
@@ -81,8 +81,6 @@ function channelData() {
 	this.getVideoIdByName = "";
 	this.getVideoNameById = "";
 	this.getVideoStatistics = ""; // call VideoStatistics class (ID of video is needed)
-	this.getVideoData = new videoData(id); // call VideoData class (ID of video is needed)
+	this.getVideoData = new videoData(); // call VideoData class (ID of video is needed)
 }
 
-var channelInfo = new channelData();
-channelInfo.getVideoData.title;

@@ -1,5 +1,9 @@
 function videoData() {
-	this.title = function() {
-		return "Es hat funktioniert!";
-	};
+	this.id = "";
+	this.test = "red";
+	this.title = getTitle();
+}
+
+function getTitle() {
+	return "hallo " + this.test;	
 }
