@@ -4,8 +4,7 @@ var $logoutButton = $('#logout a');
 
 var app = {
 	init : function() {	
-		var channelInfo = new channelData("test");
-		alert(channelInfo.getVideoData.title);
+
 		
 		 $logoutButton.hide();
 		 $loginButton.show();
@@ -60,7 +59,7 @@ var app = {
 			var channelInfo = new channelData(localStorage.access_token);
 			
 			
-			$loginStatus.append('<br>Deine ID ist: ' + channelInfo.id);
+			$loginStatus.append('<br>Deine ID ist: ' + channelInfo.id());
 			localStorage.channelId = data;
 			$loginStatus.append(localStorage.access_token);
 			$loginStatus.append('<br>Die lokale ID: ' + localStorage.channelId);
