@@ -3,7 +3,7 @@
  * © (2013) Dennis Nemec & Raphael Hauger
  *
  */
-
+var channelReqLink = "https://www.googleapis.com/youtube/v3/channels";
 
 var channel = {	
 id : function() {
@@ -65,11 +65,16 @@ getVideoIdByName: function() {
 }
 };
 
-function channelData(id) {
+
+
+// new kind of fetching data
+function channelData(access_token) {
 	// properties	
+	this.access_token = access_token;
+	
 	this.title = "";
-	this.id = "";
-	this.uploads = ""; // ID of the upload's playlist
+	this.id = getChannelId;
+	this.uploads = getUploadPlaylist; // ID of the upload's playlist
 	this.videoAmount = ""; // integer with the amount of videos
 	this.status = ""; 
 	this.description = "";
@@ -82,5 +87,27 @@ function channelData(id) {
 	this.getVideoNameById = "";
 	this.getVideoStatistics = ""; // call VideoStatistics class (ID of video is needed)
 	this.getVideoData = new videoData(); // call VideoData class (ID of video is needed)
+}
+
+function getChannelId() {
+	var deferred = $.Deferred();
+	
+	$.getJSON(channelReqLink, {
+		access_token: this.access_token,
+		part: "id",
+		mine: true
+	}).done(function(data) {
+		deferred.resolve(data.items[0].id);
+		return data.items[0].id;
+	}).fail(function(data) {
+		deferred.reject();
+		return false;
+	});
+	
+	return deferred.promise();
+}
+
+function getUploadPlaylist() {
+	
 }
 
