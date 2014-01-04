@@ -90,17 +90,20 @@ function channelData(access_token) {
 }
 
 function getChannelId() {
+	var tmp = "";
+	
 	$.getJSON(channelReqLink, {
 		access_token: this.access_token,
 		part: "id,snippet",
 		mine: true
 	}).done(function(data) {
-		this.id = data.items[0].id;
-		return data.items[0].id;
+		tmp = data.items[0].id;
 	}).fail(function(data) {
 		$loginStatus.append("fuck!");
 		return "false";
 	});
+	
+	return tmp;
 }
 
 function getUploadPlaylist() {
