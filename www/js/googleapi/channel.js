@@ -90,19 +90,17 @@ function channelData(access_token) {
 }
 
 function getChannelId() {
+	var deferred = $.Deferred();
 	var id;
 	
 	$.getJSON(channelReqLink, {
-		access_token: this.access_token,
+		access_token: "ya29.1.AADtN_X9c9NlyVDzCMBHrM0RxjgY86rhwte2tgREqXnTUSvEZDpP2nf7OfhqJf8",
 		part: "id,snippet",
 		mine: true
-	}).done(function(data) {
-		id = data.items[0].id;
-	}).fail(function(data) {
-		$loginStatus.append("fuck!");
-		return "false";
+	},function(response) {
+		id = response.items[0].id;
 	});
-	
+	alert(id);
 	return id;
 }
 
