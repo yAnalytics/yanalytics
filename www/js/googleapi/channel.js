@@ -94,10 +94,10 @@ function getChannelId() {
 	
 	$.getJSON(channelReqLink, {
 		access_token: this.access_token,
-		part: "id",
+		part: "id,snippet",
 		mine: true
 	}).done(function(data) {
-		return data.items.id;
+		return data.items[0].id;
 	}).fail(function(data) {
 		return false;
 	});
