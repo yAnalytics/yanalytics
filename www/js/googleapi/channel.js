@@ -97,14 +97,10 @@ function getChannelId() {
 		part: "id",
 		mine: true
 	}).done(function(data) {
-		deferred.resolve(data.items[0].id);
 		return data.items.id;
 	}).fail(function(data) {
-		deferred.reject();
 		return false;
 	});
-	
-	return deferred.promise();
 }
 
 function getUploadPlaylist() {
