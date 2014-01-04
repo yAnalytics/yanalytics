@@ -91,11 +91,11 @@ function channelData(access_token) {
 
 function getChannelId() {
 	$.getJSON(channelReqLink, {
-		access_token: localStorage.access_token,
+		access_token: this.access_token,
 		part: "id,snippet",
 		mine: true
 	}).done(function(data) {
-		$loginStatus.append(data + data.items[0].id);
+		this.id = data.items[0].id;
 		return data.items[0].id;
 	}).fail(function(data) {
 		$loginStatus.append("fuck!");
