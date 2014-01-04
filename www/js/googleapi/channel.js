@@ -90,8 +90,6 @@ function channelData(access_token) {
 }
 
 function getChannelId() {
-	var deferred = $.Deferred();
-	
 	$.getJSON(channelReqLink, {
 		access_token: this.access_token,
 		part: "id,snippet",
