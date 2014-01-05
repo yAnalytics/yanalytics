@@ -56,15 +56,14 @@ var app = {
 	},
 	
 	view : function() {
-		
-			var info = new channelData("ya29.1.AADtN_UHsbLX_muT9oAtdXqCu2sQ8iFZK5MZQbq0Dt7ZInmsFHaOOhpIcKeSV8A");
-        	
+		console.log("bin drin!");
+			var info = new channelData();
         	$loginStatus.append("ID: " + info.id);
         	$loginStatus.append("<br>Upload-ID: " + info.uploads); 	
         	$loginStatus.append("<br>Titel: " + info.title);
         	$loginStatus.append("<br>Menge an Videos: " + info.thumbnailUrlDefault);
         	$loginStatus.append("<br>Beschreibung: " + info.subscribers);
-        	$loginStatus.append("<br><img src='"+ info.thumbnailUrlHigh + "' alt='thumbnail' width='50px' height='50px'>");
+        	$loginStatus.append("<br><img src='"+ info.thumbnailUrlHigh + "' alt='thumbnail' width='100%' height='50px'>");
 	}
 };
 
