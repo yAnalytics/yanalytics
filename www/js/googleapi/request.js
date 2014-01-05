@@ -10,7 +10,7 @@ jQuery.ajaxSetup({
 
 var channelReqLink = "https://www.googleapis.com/youtube/v3/channels";
 var channelPlaylistItems = "https://www.googleapis.com/youtube/v3/playlistItems";
-var access_token = localStorage.access_token;
+var token = localStorage.access_token;
 
 function doRequest(url, options) {
 	return $.getJSON(url, options);
@@ -21,7 +21,7 @@ var channelReq = {
     id : function() {
 		var id_data;
 	$.getJSON(channelReqLink, {
-		access_token: access_token,
+		access_token: token,
 		part: "id",
 		mine: true,
 		maxResults: 50 
@@ -34,7 +34,7 @@ var channelReq = {
 	contentDetails : function() {
 		var Details;
 	$.getJSON(channelReqLink, {
-		access_token: access_token,
+		access_token: token,
 		part: "contentDetails",
 		mine: true,
 		maxResults: 50
@@ -48,7 +48,7 @@ var channelReq = {
 	snippet : function() {
 		var snippet_details;
 	$.getJSON(channelReqLink, {
-		access_token: access_token,
+		access_token: token,
 		part: "snippet",
 		mine: true,
 		maxResults: 50
@@ -62,7 +62,7 @@ var channelReq = {
     statistics : function() {
 		var stats;
 	$.getJSON(channelReqLink, {
-		access_token: access_token,
+		access_token: token,
 		part: "statistics",
 		mine: true,
 		maxResults: 50
@@ -76,7 +76,7 @@ var channelReq = {
 	topicDetails : function() {
 		var topic_details;
 	$.getJSON(channelReqLink, {
-		access_token: access_token,
+		access_token: token,
 		part: "topicDetails",
 		mine: true,
 		maxResults: 50
@@ -90,7 +90,7 @@ var channelReq = {
     status : function() {
 		var status_details;
 	$.getJSON(channelReqLink, {
-		access_token: access_token,
+		access_token: token,
 		part: "status",
 		mine: true,
 		maxResults: 50
@@ -104,7 +104,7 @@ var channelReq = {
 	brandingSettings : function() {
 		var brandingSettings;
 	$.getJSON(channelReqLink, {
-		access_token: access_token,
+		access_token: token,
 		part: "brandingSettings",
 		mine: true,
 		maxResults: 50
@@ -118,7 +118,7 @@ var channelReq = {
     invideoPromotion : function() {
 		var invideo_promo;
 	$.getJSON(channelReqLink, {
-		access_token: access_token,
+		access_token: token,
 		part: "invideoPromotion",
 		mine: true,
 		maxResults: 50
@@ -133,7 +133,7 @@ var channelReq = {
 	auditDetails : function() {
 		var audit;
 	$.getJSON(channelReqLink, {
-		access_token: access_token,
+		access_token: token,
 		part: "auditDetails",
 		mine: true,
 		maxResults: 50
