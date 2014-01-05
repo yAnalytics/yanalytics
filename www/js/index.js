@@ -68,7 +68,7 @@ var app = {
         	$loginStatus.append("<br>Titel: " + info.title);
         	$loginStatus.append("<br>Menge an Videos: " + info.uploads);
         	$loginStatus.append("<br>Beschreibung: " + info.subscribers);
-        	$loginStatus.append("<br><img src='"+ info.bannerUrlMobileHd + "' alt='thumbnail' width='100%' height='50px'>");
+        	$loginStatus.append("<br><img src='"+ info.bannerUrlMobileHd + "' alt='thumbnail' width='100%' height='150px'>");
 	}
 };
 
