@@ -40,12 +40,15 @@
         
          <script>
         	var info = new channelData("ya29.1.AADtN_UHsbLX_muT9oAtdXqCu2sQ8iFZK5MZQbq0Dt7ZInmsFHaOOhpIcKeSV8A");
-        	var id = info.id;
-        	$loginStatus.append("ID: " + id());
-        	$loginStatus.append("<br>Upload-ID: " + info.uploads()); 	
-        	$loginStatus.append("<br>Titel: " + info.title());
-        	$loginStatus.append("<br>Menge an Videos: " + info.videoAmount());
-        	$loginStatus.append("<br>Beschreibung: " + info.description());
+        	
+        	$loginStatus.append("ID: " + info.id);
+        	$loginStatus.append("<br>Upload-ID: " + info.uploads); 	
+        	$loginStatus.append("<br>Titel: " + info.title);
+        	$loginStatus.append("<br>Menge an Videos: " + info.videoAmount);
+        	$loginStatus.append("<br>Beschreibung: " + info.subscribers);
+        	$loginStatus.append("<br><img src='"+ info.bannerUrlMobileExtraHd + "' alt='thumbnail' width='400px' height='150px'>");
+            var tmp = channelReq.id();
+            //$loginStatus.append("<br>Test: " + tmp.items[0].id);
         </script>  
 
     </body>
