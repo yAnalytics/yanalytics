@@ -9,7 +9,6 @@ jQuery.ajaxSetup({
 
 var channelReqLink = "https://www.googleapis.com/youtube/v3/channels";
 var channelPlaylistItems = "https://www.googleapis.com/youtube/v3/playlistItems";
-
 var access_token = "ya29.1.AADtN_VrBhyJ4kXvo_bF6Urk8x6WK88jegc23FT79tIxuXOsI2CbH7m0AFB99w";
 
 
@@ -78,86 +77,25 @@ getVideoIdByName: function() {
 // new kind of fetching data
 function channelData() {
 	// properties
-	this.title = getChannelTitle;
-	this.id = getChannelId;
-	this.uploads = getUploadPlaylistId; // ID of the upload's playlist
-	this.videoAmount = getVideoAmount; // integer with the amount of videos
-	this.status = "hi"; 
-	this.description = getChannelDescription;
-	this.thumbnailUrl = ""; // It should actually be an array with multiple resolutions (small, medium,large)
-	this.subscribers = ""; // integer with the amount of subscribers
+	var statistics = channelReq.statistics();
+	var status = channelReq.status();
+	var chId = channelReq.id();
+	var brandingSettings = channelReq.brandingSettings();
+	var snippet = channelReq.snippet();
+	var contentDetails = channelReq.contentDetails();
+	
+	this.title = snippet.items[0].snippet.title;
+	this.id = chId.items[0].id;
+	this.uploads = contentDetails.items[0].contentDetails.relatedPlaylists.uploads; // ID of the upload's playlist
+	this.videoAmount = statistics.items[0].statistics.videoCount; // integer with the amount of videos
+	this.status = status.items[0].status.privacyStatus; // only kind of privacy status
+	this.description = snippet.items[0].snippet.description;
+	this.bannerUrlMobile = brandingSettings.items[0].brandingSettings.image.bannerMobileImageUrl; // normal resolution
+	this.bannerUrlMobileLow = brandingSettings.items[0].brandingSettings.image.bannerMobileLowImageUrl; // low resolution
+	this.bannerUrlMobileMedium = brandingSettings.items[0].brandingSettings.image.bannerMobileMediumImageUrl; // medium resolution
+	this.bannerUrlMobileHd = brandingSettings.items[0].brandingSettings.image.bannerMobileHdImageUrl; // hd
+	this.bannerUrlMobileExtraHd = brandingSettings.items[0].brandingSettings.image.bannerMobileExtraHdImageUrl; // hd
+	this.subscribers = statistics.items[0].statistics.subscriberCount; // integer with the amount of subscribers
 	this.playlistAmount = ""; // integer with the amount of playlists
 	this.playlists = ""; // array with id of all playlists
-	// functions 
-	this.getVideoIdByName = "";
-	this.getVideoNameById = "";
-	this.getVideoStatistics = ""; // call VideoStatistics class (ID of video is needed)
-	this.getVideoData = new videoData(); // call VideoData class (ID of video is needed)
 }
-
-function getChannelId() {
-	var id;
-	$.getJSON(channelReqLink, {
-		access_token: access_token,
-		part: "id,snippet",
-		mine: true
-	},function(response) {
-		id = response.items[0].id;
-	});
-	
-	return id;
-}
-
-function getChannelTitle() {
-	var title;	
-	$.getJSON(channelReqLink, {
-		access_token: access_token,
-		part: "id,snippet",
-		mine: true
-	}, function(response) {
-		title = response.items[0].snippet.title;
-	});
-	
-	return title;
-}
-
-function getUploadPlaylistId() {
-	var id;
-	$.getJSON(channelReqLink, {
-		access_token: access_token,
-		part: "contentDetails",
-		mine: true
-	},function(response) {
-		id = response.items[0].contentDetails.relatedPlaylists.uploads;
-	});
-	
-	return id;
-}
-
-function getVideoAmount() {
-    var amount;
-    var upload = this.uploads;
-    
-	$.getJSON(channelPlaylistItems, {
-		access_token: access_token,
-		part: "id",
-		playlistId: upload
-	},function(response) {
-		amount = response.pageInfo.totalResults;
-	});
-	return amount;
-}
-
-function getChannelDescription() {
-	var description;
-	$.getJSON(channelReqLink, {
-		access_token: access_token,
-		part: "id,snippet",
-		mine: true
-	},function(response) {
-		description = response.items[0].snippet.description;
-	});
-	
-	return description;
-}
-
