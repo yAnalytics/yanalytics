@@ -56,14 +56,11 @@ var app = {
 	
 	view : function() {
 		channel.id().done(function(data) {
-			var channelInfo = new channelData();
+			var channelInfo = new channelData(localStorage.access_token);
 			
 			
 			$loginStatus.append('<br>Deine ID ist: ' + channelInfo.id);
-			localStorage.channelId = channelInfo.id;
-			$loginStatus.append("<img src='" + channelInfo.bannerUrlMobileHd + "' alt='Banner' width='100%' height='50px'>);
-			
-			
+			localStorage.channelId = channelInfo.id;;
 			$loginStatus.append("Access:  <br><textarea>" + localStorage.access_token + "</textarea>");
 			$loginStatus.append('<br>Die lokale ID: ' + localStorage.channelId);
 			
