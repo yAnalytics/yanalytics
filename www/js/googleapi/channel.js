@@ -19,12 +19,16 @@ function channelData() {
 	this.videoAmount = statistics.items[0].statistics.videoCount; // integer with the amount of videos
 	this.status = status.items[0].status.privacyStatus; // only kind of privacy status
 	this.description = snippet.items[0].snippet.description;
+	this.thumbnailUrlMedium = snippet.items[0].snippet.thumbnails.medium.url;
+	this.thumbnailUrlHigh = snippet.items[0].snippet.thumbnails.high.url;
 	this.bannerUrlMobile = brandingSettings.items[0].brandingSettings.image.bannerMobileImageUrl; // normal resolution
 	this.bannerUrlMobileLow = brandingSettings.items[0].brandingSettings.image.bannerMobileLowImageUrl; // low resolution
 	this.bannerUrlMobileMedium = brandingSettings.items[0].brandingSettings.image.bannerMobileMediumImageUrl; // medium resolution
 	this.bannerUrlMobileHd = brandingSettings.items[0].brandingSettings.image.bannerMobileHdImageUrl; // hd
 	this.bannerUrlMobileExtraHd = brandingSettings.items[0].brandingSettings.image.bannerMobileExtraHdImageUrl; // hd
 	this.subscribers = statistics.items[0].statistics.subscriberCount; // integer with the amount of subscribers
+	
+	// coming soon - I didn't feel like doing that :D
 	this.playlistAmount = ""; // integer with the amount of playlists
 	this.playlists = ""; // array with id of all playlists
 }
