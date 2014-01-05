@@ -3,7 +3,15 @@
  * © (2013) Dennis Nemec & Raphael Hauger
  *
  */
+jQuery.ajaxSetup({
+   async: false
+});
+
 var channelReqLink = "https://www.googleapis.com/youtube/v3/channels";
+var channelPlaylistItems = "https://www.googleapis.com/youtube/v3/playlistItems";
+
+var access_token = "ya29.1.AADtN_VrBhyJ4kXvo_bF6Urk8x6WK88jegc23FT79tIxuXOsI2CbH7m0AFB99w";
+
 
 var channel = {	
 id : function() {
@@ -68,17 +76,15 @@ getVideoIdByName: function() {
 
 
 // new kind of fetching data
-function channelData(access_token) {
-	// properties	
-	this.access_token = access_token;
-	
-	this.title = "";
+function channelData() {
+	// properties
+	this.title = getChannelTitle;
 	this.id = getChannelId;
-	this.uploads = getUploadPlaylist; // ID of the upload's playlist
-	this.videoAmount = ""; // integer with the amount of videos
-	this.status = ""; 
-	this.description = "";
-	this.thumbnail = ""; // It should actually be an array with multiple resolutions (small, medium,large)
+	this.uploads = getUploadPlaylistId; // ID of the upload's playlist
+	this.videoAmount = getVideoAmount; // integer with the amount of videos
+	this.status = "hi"; 
+	this.description = getChannelDescription;
+	this.thumbnailUrl = ""; // It should actually be an array with multiple resolutions (small, medium,large)
 	this.subscribers = ""; // integer with the amount of subscribers
 	this.playlistAmount = ""; // integer with the amount of playlists
 	this.playlists = ""; // array with id of all playlists
@@ -90,21 +96,68 @@ function channelData(access_token) {
 }
 
 function getChannelId() {
-	var deferred = $.Deferred();
 	var id;
-	
 	$.getJSON(channelReqLink, {
-		access_token: "ya29.1.AADtN_X9c9NlyVDzCMBHrM0RxjgY86rhwte2tgREqXnTUSvEZDpP2nf7OfhqJf8",
+		access_token: access_token,
 		part: "id,snippet",
 		mine: true
 	},function(response) {
 		id = response.items[0].id;
 	});
-	alert(id);
+	
 	return id;
 }
 
-function getUploadPlaylist() {
+function getChannelTitle() {
+	var title;	
+	$.getJSON(channelReqLink, {
+		access_token: access_token,
+		part: "id,snippet",
+		mine: true
+	}, function(response) {
+		title = response.items[0].snippet.title;
+	});
 	
+	return title;
+}
+
+function getUploadPlaylistId() {
+	var id;
+	$.getJSON(channelReqLink, {
+		access_token: access_token,
+		part: "contentDetails",
+		mine: true
+	},function(response) {
+		id = response.items[0].contentDetails.relatedPlaylists.uploads;
+	});
+	
+	return id;
+}
+
+function getVideoAmount() {
+    var amount;
+    var upload = this.uploads;
+    
+	$.getJSON(channelPlaylistItems, {
+		access_token: access_token,
+		part: "id",
+		playlistId: upload
+	},function(response) {
+		amount = response.pageInfo.totalResults;
+	});
+	return amount;
+}
+
+function getChannelDescription() {
+	var description;
+	$.getJSON(channelReqLink, {
+		access_token: access_token,
+		part: "id,snippet",
+		mine: true
+	},function(response) {
+		description = response.items[0].snippet.description;
+	});
+	
+	return description;
 }
 

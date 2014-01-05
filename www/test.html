@@ -34,17 +34,19 @@
         <script type="text/javascript" src="js/googleapi/user.js"></script>
         <script type="text/javascript" src="js/googleapi/channel.js"></script>
         <script type="text/javascript" src="js/googleapi/auth.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/googleapi/request.js"></script>
         <script type="text/javascript" src="js/googleapi/video.js"></script>
-        <script type="text/javascript" src="js/time.js"></script>
         
          <script>
-            
-        	var info = new channelData("ya29.1.AADtN_X9c9NlyVDzCMBHrM0RxjgY86rhwte2tgREqXnTUSvEZDpP2nf7OfhqJf8");
+        	var info = new channelData("ya29.1.AADtN_UHsbLX_muT9oAtdXqCu2sQ8iFZK5MZQbq0Dt7ZInmsFHaOOhpIcKeSV8A");
         	var id = info.id;
-        	$loginStatus.append("ID: " + id()); 	
+        	$loginStatus.append("ID: " + id());
+        	$loginStatus.append("<br>Upload-ID: " + info.uploads()); 	
+        	$loginStatus.append("<br>Titel: " + info.title());
+        	$loginStatus.append("<br>Menge an Videos: " + info.videoAmount());
+        	$loginStatus.append("<br>Beschreibung: " + info.description());
         </script>  
 
-<textarea>asdf</textarea>
     </body>
 </html>
