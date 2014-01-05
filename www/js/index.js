@@ -66,7 +66,7 @@ var app = {
         	$loginStatus.append("ID: " + info.id);
         	$loginStatus.append("<br>Upload-ID: " + info.uploads); 	
         	$loginStatus.append("<br>Titel: " + info.title);
-        	$loginStatus.append("<br>Menge an Videos: " + info.thumbnailUrlDefault);
+        	$loginStatus.append("<br>Menge an Videos: " + info.uploads);
         	$loginStatus.append("<br>Beschreibung: " + info.subscribers);
         	$loginStatus.append("<br><img src='"+ info.bannerUrlMobileHd + "' alt='thumbnail' width='100%' height='50px'>");
 	}
