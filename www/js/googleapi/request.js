@@ -10,7 +10,7 @@ jQuery.ajaxSetup({
 
 var channelReqLink = "https://www.googleapis.com/youtube/v3/channels";
 var channelPlaylistItems = "https://www.googleapis.com/youtube/v3/playlistItems";
-var access_token = "ya29.1.AADtN_Vl7BGnSyd0g24vUDiPrq4wCFA4M0uJVg7KMq96zCVyiiHyd7rYfo23auNG2ITX3g";
+var access_token = localStorage.access_token;
 
 function doRequest(url, options) {
 	return $.getJSON(url, options);
