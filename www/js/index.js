@@ -59,7 +59,7 @@ var app = {
 			var channelInfo = new channelData(localStorage.access_token);
 			
 			
-			$loginStatus.append('<br>Deine ID ist: ' + channelInfo.id());
+			$loginStatus.append('<br>Deine ID ist: ' + channelInfo.id);
 			localStorage.channelId = data;
 			$loginStatus.append("Access:  <br><textarea>" + localStorage.access_token + "</textarea>");
 			$loginStatus.append('<br>Die lokale ID: ' + localStorage.channelId);
