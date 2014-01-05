@@ -31,10 +31,14 @@ var app = {
 		 	$logoutButton.show();
 		 	
 		 	localStorage.access_token = data.access_token;
+		 	token = localStorage.access_token;
+		 	alert(token);
+		 	
 		 	user.getName({
 		 		access_token: data.access_token
 		 	}).done(function(data) {
 		 		$loginStatus.append('<br>Hallo ' + data.name);
+		 		
 		 		console.log('Rufe jetzt app.view() auf');
 		 		app.view();
 		 	}).fail(function(data) {
