@@ -30,6 +30,7 @@ var app = {
 		 	$loginButton.hide();
 		 	$logoutButton.show();
 		 	
+		 	localStorage.access_token = data.access_token;
 		 	user.getName({
 		 		access_token: data.access_token
 		 	}).done(function(data) {
@@ -55,35 +56,15 @@ var app = {
 	},
 	
 	view : function() {
-		channel.id().done(function(data) {
-			var channelInfo = new channelData(localStorage.access_token);
-			
-			
-			$loginStatus.append('<br>Deine ID ist: ' + channelInfo.id);
-			localStorage.channelId = channelInfo.id;;
-			$loginStatus.append("Access:  <br><textarea>" + localStorage.access_token + "</textarea>");
-			$loginStatus.append('<br>Die lokale ID: ' + localStorage.channelId);
-			
-		    channel.viewsLastMonth().done(function(response) {
-			}).fail(function(error) {
-				$loginStatus.append('Es gab einen Fehler: <br>');
-		   });
-		   
-		   var x = new Date();
-		   
-		   with(x) {
-		   	setDate(1);
-		   	setDay(getDay());
-		   	setMonth(getMonth() - 1);
-		   }
-		   
-		   $loginStatus.append("<br>Die Zeit: " + x);
-		 
-			
-		}).fail(function() {
-			$loginStatus.append('Es ist ein Fehler aufgetreten.');
-		});
-			
+		
+			var info = new channelData("ya29.1.AADtN_UHsbLX_muT9oAtdXqCu2sQ8iFZK5MZQbq0Dt7ZInmsFHaOOhpIcKeSV8A");
+        	
+        	$loginStatus.append("ID: " + info.id);
+        	$loginStatus.append("<br>Upload-ID: " + info.uploads); 	
+        	$loginStatus.append("<br>Titel: " + info.title);
+        	$loginStatus.append("<br>Menge an Videos: " + info.thumbnailUrlDefault);
+        	$loginStatus.append("<br>Beschreibung: " + info.subscribers);
+        	$loginStatus.append("<br><img src='"+ info.thumbnailUrlHigh + "' alt='thumbnail' width='50px' height='50px'>");
 	}
 };
 
