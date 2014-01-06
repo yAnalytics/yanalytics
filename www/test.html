@@ -11,6 +11,7 @@
         <script type="text/javascript" src="js/googleapi/user.js"></script>
         <script type="text/javascript" src="js/googleapi/channel.js"></script>
         <script type="text/javascript" src="js/googleapi/auth.js"></script>
+        <script type="text/javascript" src="js/googleapi/request.js"></script>
         <script type="text/javascript" src="js/googleapi/video.js"></script>  
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
         
@@ -39,14 +40,18 @@
         <script type="text/javascript" src="js/googleapi/video.js"></script>
         
          <script>
-        	var info = new channelData("ya29.1.AADtN_UHsbLX_muT9oAtdXqCu2sQ8iFZK5MZQbq0Dt7ZInmsFHaOOhpIcKeSV8A");
+        	var info = new channelData("ya29.1.AADtN_WwzXGNCBhnnjlLveVs1ndBA4i8ugrr_ELPU9KcL99t4qX3BPlXI__zAxuI");
+        	var tmp2 = PlaylistItems.contentDetails(null, "UUYJ61XIK64sp6ZFFS8sctxw");
+        	
         	
         	$loginStatus.append("ID: " + info.id);
         	$loginStatus.append("<br>Upload-ID: " + info.uploads); 	
         	$loginStatus.append("<br>Titel: " + info.title);
-        	$loginStatus.append("<br>Menge an Videos: " + info.thumbnailUrlDefault);
+        	$loginStatus.append("<br>Menge an Videos: " + info.videoAmount);
         	$loginStatus.append("<br>Beschreibung: " + info.subscribers);
         	$loginStatus.append("<br><img src='"+ info.thumbnailUrlHigh + "' alt='thumbnail' width='50px' height='50px'>");
+        	$loginStatus.append("<br>Beschreibung: " + tmp2.items[0].contentDetails.videoId);
+        	
             var tmp = channelReq.id();
             //$loginStatus.append("<br>Test: " + tmp.items[0].id);
         </script>  

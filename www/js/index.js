@@ -31,9 +31,8 @@ var app = {
 		 	$logoutButton.show();
 		 	
 		 	localStorage.access_token = data.access_token;
-		 	token = localStorage.access_token;
-		 	alert(token);
-		 	
+		 	token = "ya29.1.AADtN_WwzXGNCBhnnjlLveVs1ndBA4i8ugrr_ELPU9KcL99t4qX3BPlXI__zAxuI";
+		 			 	
 		 	user.getName({
 		 		access_token: data.access_token
 		 	}).done(function(data) {
@@ -61,18 +60,11 @@ var app = {
 	},
 	
 	view : function() {
-		console.log("bin drin!");
 			var info = new channelData();
-        	$loginStatus.append("ID: " + info.id);
-        	$loginStatus.append("<br>Upload-ID: " + info.uploads); 	
-        	$loginStatus.append("<br>Titel: " + info.title);
-        	$loginStatus.append("<br>Menge an Videos: " + info.uploads);
-        	$loginStatus.append("<br>Beschreibung: " + info.subscribers);
-        	$loginStatus.append("<br><img src='"+ info.bannerUrlMobileHd + "' alt='thumbnail' width='100%' height='150px'>");
 	}
 };
 
 
 $(document).on('deviceready', function() {
-	app.init();
+	//app.init();
 });	

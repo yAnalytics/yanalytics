@@ -8,9 +8,15 @@ jQuery.ajaxSetup({
    async: false
 });
 
+// channel stuff
 var channelReqLink = "https://www.googleapis.com/youtube/v3/channels";
 var channelPlaylistItems = "https://www.googleapis.com/youtube/v3/playlistItems";
-var token;
+
+// video stuff
+var videoSearchReqLink = "";
+var PlaylistItemsLink = "https://www.googleapis.com/youtube/v3/playlistItems";
+
+var token = "ya29.1.AADtN_WwzXGNCBhnnjlLveVs1ndBA4i8ugrr_ELPU9KcL99t4qX3BPlXI__zAxuI" ;
 
 function doRequest(url, options) {
 	return $.getJSON(url, options);
@@ -142,6 +148,23 @@ var channelReq = {
 		audit = response;
 	});
 	
+	return audit;
+	}
+};
+var PlaylistItems = {
+   contentDetails : function(nextPageToken , playlistid) {
+		var audit;
+		
+	 $.getJSON(PlaylistItemsLink, {
+		access_token: token,
+		part: "contentDetails",
+		mine: true,
+		maxResults: 5,
+		playlistId: playlistid,
+		nextPageToken: nextPageToken
+	  }, function(response) {
+		audit = response;
+	  });
 	return audit;
 	}
 };
