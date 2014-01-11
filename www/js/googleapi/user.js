@@ -6,6 +6,9 @@
  * 
  * NOTICE:
  * as soon as possible more specific user information like the ID, Name and so on will be added.
+ * 
+ * EDIT: 
+ * See channel.js
  */
 
 var user = {
