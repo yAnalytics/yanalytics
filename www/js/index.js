@@ -13,7 +13,7 @@ var app = {
 		 $loginButton.unbind().on('click', function() {
 		 	app.showLogin();
 		 });
-		 
+		 et
 		$logoutButton.unbind().on('click', function() {
 		 	auth.revokeToken().done(function(data) {
 		 		console.log('Daten erfolgreich gelöscht.');
