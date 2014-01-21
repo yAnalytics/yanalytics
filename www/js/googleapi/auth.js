@@ -18,7 +18,7 @@ var auth = {
 		});
 
 		
-		var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
+		var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no,EnableViewPortScale=no');
 
 		$(authWindow).on('loadstart', function(e) {
 			var url = e.originalEvent.url;

@@ -13,10 +13,10 @@ var channelReqLink = "https://www.googleapis.com/youtube/v3/channels";
 var channelPlaylistItems = "https://www.googleapis.com/youtube/v3/playlistItems";
 
 // video stuff
-var videoSearchReqLink = "";
+var videoSearchReqLink = "https://www.googleapis.com/youtube/v3/search";
 var PlaylistItemsLink = "https://www.googleapis.com/youtube/v3/playlistItems";
 
-var token = "ya29.1.AADtN_WwzXGNCBhnnjlLveVs1ndBA4i8ugrr_ELPU9KcL99t4qX3BPlXI__zAxuI" ;
+var token = "ya29.1.AADtN_W54MMXAIib0rwHlJ-jBSxCIK3vCXsQKp0hpd700mgKYEq1XIOUFli7FPBx" ;
 
 function doRequest(url, options) {
 	return $.getJSON(url, options);
@@ -24,7 +24,6 @@ function doRequest(url, options) {
 
 
 var channelReq = {	
-	
     id : function() {
 		var id_data;
 	$.getJSON(channelReqLink, {
@@ -151,9 +150,14 @@ var channelReq = {
 	return audit;
 	}
 };
+
+
+
+
+// PLAYLIST
 var PlaylistItems = {
    contentDetails : function(nextPageToken , playlistid) {
-		var audit;
+		var items;
 		
 	 $.getJSON(PlaylistItemsLink, {
 		access_token: token,
@@ -163,8 +167,23 @@ var PlaylistItems = {
 		playlistId: playlistid,
 		nextPageToken: nextPageToken
 	  }, function(response) {
-		audit = response;
+		items = response;
 	  });
-	return audit;
+	return items;
+	},
+	
+	search : function(q , playlistid) {
+	var items;
+		
+	 $.getJSON(videoSearchReqLink, {
+		access_token: token,
+		part: "id,snippet",
+		forMine: true,
+		maxResults: 5,
+		type: "video"
+	  }, function(response) {
+		items = response;
+	  });
+	return items;
 	}
 };

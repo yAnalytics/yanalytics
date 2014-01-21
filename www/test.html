@@ -42,7 +42,7 @@
          <script>
         	var info = new channelData("ya29.1.AADtN_WwzXGNCBhnnjlLveVs1ndBA4i8ugrr_ELPU9KcL99t4qX3BPlXI__zAxuI");
         	var tmp2 = PlaylistItems.contentDetails(null, "UUYJ61XIK64sp6ZFFS8sctxw");
-        	
+        	var s = new searchVideo("Netzwerkprogrammierung" , info.uploads);
         	
         	$loginStatus.append("ID: " + info.id);
         	$loginStatus.append("<br>Upload-ID: " + info.uploads); 	
@@ -52,6 +52,7 @@
         	$loginStatus.append("<br><img src='"+ info.thumbnailUrlHigh + "' alt='thumbnail' width='50px' height='50px'>");
         	$loginStatus.append("<br>Beschreibung: " + tmp2.items[0].contentDetails.videoId);
         	
+        	$loginStatus.append("<br>Beschreibung: " + s.items[0].snippet.title);
             var tmp = channelReq.id();
             //$loginStatus.append("<br>Test: " + tmp.items[0].id);
         </script>  

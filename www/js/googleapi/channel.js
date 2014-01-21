@@ -32,3 +32,7 @@ function channelData() {
 	this.playlistAmount = ""; // integer with the amount of playlists
 	this.playlists = ""; // array with id of all playlists
 }
+
+function searchVideo(q , playlistid) {
+	return PlaylistItems.search(q ,playlistid);
+}
