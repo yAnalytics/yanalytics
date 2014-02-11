@@ -66,5 +66,5 @@ var app = {
 
 
 $(document).on('deviceready', function() {
-	//app.init();
+	app.init();
 });	
