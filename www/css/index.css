@@ -82,10 +82,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c90000', end
 }
 
 #header {
-	position:relative;
+	position:absolute;
 	margin: 0px;
 	padding: 0px;
 	border: solid #000 1px;
 	width: 100%;
-	height: 20%;
+	height: 15%;
 }
