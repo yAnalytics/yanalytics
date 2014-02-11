@@ -9,6 +9,7 @@
        Raphael H.
     </author>
     <access origin="*" />
+    <preference name="phonegap-version" value="3.1.0" />
     <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
 </widget>
