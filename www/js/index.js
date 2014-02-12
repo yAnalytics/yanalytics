@@ -29,7 +29,7 @@ var app = {
 		 auth.getToken().done(function(data) {
 		 	$loginButton.hide();
 		 	$logoutButton.show();
-		 	
+		 	$loginButton.append('bin auth.getToken()..');
 		 	localStorage.access_token = data.access_token;
 		 	token = "ya29.1.AADtN_WwzXGNCBhnnjlLveVs1ndBA4i8ugrr_ELPU9KcL99t4qX3BPlXI__zAxuI";
 		 			 	
