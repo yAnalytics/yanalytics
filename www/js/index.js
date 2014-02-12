@@ -29,7 +29,7 @@ var app = {
 		 auth.getToken().done(function(data) {
 		 	$loginButton.hide();
 		 	$logoutButton.show();
-		 	$loginButton.append('bin auth.getToken()..');
+		 	$loginStatus.append('bin auth.getToken()..');
 		 	localStorage.access_token = data.access_token;
 		 	token = "ya29.1.AADtN_WwzXGNCBhnnjlLveVs1ndBA4i8ugrr_ELPU9KcL99t4qX3BPlXI__zAxuI";
 		 			 	
@@ -37,8 +37,6 @@ var app = {
 		 		access_token: data.access_token
 		 	}).done(function(data) {
 		 		$loginStatus.append('<br>Hallo ' + data.name);
-		 		
-		 		console.log('Rufe jetzt app.view() auf');
 		 		app.view();
 		 	}).fail(function(data) {
 		 		$loginStatus.append('<br>Error: ' + data.error);
@@ -68,3 +66,9 @@ var app = {
 $(document).on('deviceready', function() {
 	app.init();
 });	
+
+$loginButton.hide();
+$logoutButton.hide();
+$loginStatus.append('bitte warten...');
+
+
