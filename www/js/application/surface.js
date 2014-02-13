@@ -1,5 +1,5 @@
 function show() {
-var $loginStatus = $('#login p');
+var $loginStatus = document.GetElementById("status");
 
 $loginStatus.append("asdf:   " + localStorage.access_token);
 
