@@ -4,8 +4,6 @@ var $logoutButton = $('#logout a');
 
 var app = {
 	init : function() {	
-
-		
 		 $logoutButton.hide();
 		 $loginButton.show();
 		 $loginStatus.html('');
