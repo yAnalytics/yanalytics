@@ -20,12 +20,7 @@
         <div class="app">
         	<p id="version">Alpha v0.0.1</p>
             <div id="login">
-                <a id="google_login">Anmelden</a><br><br>
                 <p></p>
-                <h1></h1>
-            </div>
-            <div id="logout">
-            	<a>Ausloggen</a>
             </div>
         </div>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
@@ -43,6 +38,7 @@
         	var info = new channelData(localStorage.access_token);
         	var tmp2 = PlaylistItems.contentDetails(null, "UUYJ61XIK64sp6ZFFS8sctxw");
         	var s = new searchVideo("Netzwerkprogrammierung" , info.uploads);
+        	var $loginStatus = $('#login p');
         	
         	$loginStatus.append("ID: " + info.id);
         	$loginStatus.append("<br>Upload-ID: " + info.uploads); 	
