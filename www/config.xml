@@ -13,6 +13,6 @@
     <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
     
-    <content src="test.html" />
+   
 </widget>
 
