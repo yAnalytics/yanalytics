@@ -1,5 +1,2 @@
-var surface = {
-	init : function() {
-				
-	}	
-};
+var $loginStatus = $('#login p');
+$loginStatus.append('FIST!!');

@@ -35,12 +35,12 @@
         <script type="text/javascript" src="js/googleapi/user.js"></script>
         <script type="text/javascript" src="js/googleapi/channel.js"></script>
         <script type="text/javascript" src="js/googleapi/auth.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/surface.js"></script>
         <script type="text/javascript" src="js/googleapi/request.js"></script>
         <script type="text/javascript" src="js/googleapi/video.js"></script>
         
          <script>
-        	var info = new channelData("ya29.1.AADtN_WwzXGNCBhnnjlLveVs1ndBA4i8ugrr_ELPU9KcL99t4qX3BPlXI__zAxuI");
+        	var info = new channelData(localStorage.access_token);
         	var tmp2 = PlaylistItems.contentDetails(null, "UUYJ61XIK64sp6ZFFS8sctxw");
         	var s = new searchVideo("Netzwerkprogrammierung" , info.uploads);
         	
