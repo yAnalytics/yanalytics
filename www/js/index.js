@@ -26,22 +26,23 @@ var app = {
 		 	});
 		 });
 		 
+		 // wenn login erfolgreich war bzw. token aktualisiert wurde
 		 auth.getToken().done(function(data) {
 		 	$loginButton.hide();
 		 	$logoutButton.show();
-		 	$loginStatus.append('bin auth.getToken()..');
 		 	localStorage.access_token = data.access_token;
-		 	token = "ya29.1.AADtN_WwzXGNCBhnnjlLveVs1ndBA4i8ugrr_ELPU9KcL99t4qX3BPlXI__zAxuI";
 		 			 	
 		 	user.getName({
 		 		access_token: data.access_token
 		 	}).done(function(data) {
 		 		$loginStatus.append('<br>Hallo ' + data.name);
-		 		app.view();
+		 		window.location.href='test.html';
+		 		//app.view();
 		 	}).fail(function(data) {
 		 		$loginStatus.append('<br>Error: ' + data.error);
 		 	});
 		 	
+		 	// wenn kein token vorhanden ist
 		 }).fail(function(data) {
 		 	$loginStatus.append('Logge dich bitte ein, um deine Statistiken aufrufen zu können.');
 		 });
@@ -69,6 +70,6 @@ $(document).on('deviceready', function() {
 
 $loginButton.hide();
 $logoutButton.hide();
-$loginStatus.append('bitte warten...');
+$loginStatus.append('Bitte warten...');
 
 
